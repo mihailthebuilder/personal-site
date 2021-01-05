@@ -1,12 +1,10 @@
 import "./App.scss";
 import fire from "./resources/fire.js";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import Landing from "./components/Landing";
 
 function App() {
-  const [items, setItems] = useState([]);
-
   useEffect(() => {
     fire
       .firestore()
@@ -22,6 +20,9 @@ function App() {
   return (
     <div>
       <Landing />
+      <div className="font-1">Testing this font</div>
+      <div className="font-2">Testing another font</div>
+      <div className="font-3">Testing 3rd font</div>
     </div>
   );
 }

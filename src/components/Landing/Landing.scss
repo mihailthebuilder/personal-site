@@ -38,3 +38,21 @@
 .landing-title-role {
   color: $bright-green;
 }
+
+@media (max-width: $tablet-screen) {
+  .main-header {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: unset;
+
+    nav {
+      font-size: 10vw;
+    }
+  }
+
+  .landing-title-wrapper {
+    font-size: 5.5vw;
+    align-self: end;
+    margin-bottom: 10rem;
+  }
+}

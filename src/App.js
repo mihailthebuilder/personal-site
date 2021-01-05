@@ -2,6 +2,8 @@ import "./App.scss";
 import fire from "./resources/fire.js";
 import { useState, useEffect } from "react";
 
+import Landing from "./components/Landing";
+
 function App() {
   const [items, setItems] = useState([]);
 
@@ -17,7 +19,11 @@ function App() {
       });
   }, []);
 
-  return <div className="App"></div>;
+  return (
+    <div>
+      <Landing />
+    </div>
+  );
 }
 
 export default App;

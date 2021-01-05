@@ -1,0 +1,40 @@
+@import "../../resources/variables.scss";
+
+.main-header {
+  background-color: $eerie-black;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 10vw;
+  align-items: center;
+
+  nav {
+    font-size: 5vw;
+    text-align: right;
+
+    ul {
+      margin: 0;
+      li {
+        cursor: pointer;
+        font-family: Prompt-SemiBold;
+        letter-spacing: 7px;
+        transition: 0.1s;
+      }
+
+      li:hover {
+        color: $carolina-blue;
+        transition: 0.1s;
+      }
+    }
+  }
+}
+
+.landing-title-wrapper {
+  font-family: Prompt-Regular;
+  font-size: 3.3vw;
+  cursor: default;
+}
+
+.landing-title-role {
+  color: $bright-green;
+}

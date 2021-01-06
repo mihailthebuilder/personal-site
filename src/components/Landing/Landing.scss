@@ -17,13 +17,13 @@
         cursor: pointer;
         font-family: Prompt-SemiBold;
         letter-spacing: 7px;
-        transition: 0.1s;
+        transition: 0.3s;
       }
 
       li:hover {
         color: $carolina-blue;
-        transition: 0.1s;
         padding-right: 1rem;
+        transition: 0.3s;
       }
     }
   }
@@ -87,6 +87,14 @@
   50% {
     color: inherit;
   }
+}
+
+.slide-out {
+  transform: translateX(100vw);
+}
+
+.slide-in {
+  transform: translateX(0vw);
 }
 
 @media (max-width: $tablet-screen) {

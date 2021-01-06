@@ -33,7 +33,7 @@ const Landing = () => {
   }, [content, carriage]);
 
   return (
-    <header className="main-header">
+    <section id="landing-section">
       <div className="landing-title-wrapper">
         <div className="landing-title-name">MIHAIL MARIAN,</div>
         <div className="landing-title-role">
@@ -48,7 +48,7 @@ const Landing = () => {
           <li>CONTACT</li>
         </ul>
       </nav>
-    </header>
+    </section>
   );
 };
 

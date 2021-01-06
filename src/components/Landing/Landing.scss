@@ -1,8 +1,7 @@
 @import "../../resources/variables.scss";
 
-.main-header {
+#landing-section {
   background-color: $eerie-black;
-  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0 10vw;
@@ -100,7 +99,7 @@
 }
 
 @media (max-width: $tablet-screen) {
-  .main-header {
+  #landing-section {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     align-items: unset;

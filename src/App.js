@@ -3,6 +3,7 @@ import fire from "./resources/fire.js";
 import { useEffect } from "react";
 
 import Landing from "./components/Landing";
+import About from "./components/About";
 
 function App() {
   useEffect(() => {
@@ -20,6 +21,7 @@ function App() {
   return (
     <div>
       <Landing />
+      <About />
     </div>
   );
 }

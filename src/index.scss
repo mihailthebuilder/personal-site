@@ -1,36 +1,5 @@
 @import "./resources/variables.scss";
-
-@font-face {
-  font-family: "Prompt-Light";
-  src: local("Prompt"),
-    url(./resources/fonts/Prompt-Light.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Prompt-Regular";
-  src: local("Prompt"),
-    url(./resources/fonts/Prompt-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Prompt-Medium";
-  src: local("Prompt"),
-    url(./resources/fonts/Prompt-Medium.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Prompt-SemiBold";
-  src: local("Prompt"),
-    url(./resources/fonts/Prompt-SemiBold.ttf) format("truetype");
-  font-weight: "SemiBold";
-}
-
-@font-face {
-  font-family: "Prompt-Bold";
-  src: local("Prompt"),
-    url(./resources/fonts/Prompt-Bold.ttf) format("truetype");
-  font-weight: "Bold";
-}
+@import "./resources/fonts.scss";
 
 body {
   margin: 0;

@@ -29,7 +29,7 @@ function App() {
       />
       <TypeFadeToggler
         sectionId="about"
-        typewriterText="ABOUT."
+        typewriterText="about."
         ChildComponent={About}
       />
     </div>

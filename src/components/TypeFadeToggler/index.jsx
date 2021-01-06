@@ -17,8 +17,11 @@ const TypeFadeToggler = ({ sectionId, typewriterText, ChildComponent }) => {
       setStartAnimation(true);
     } else {
       let sectionElem = document.getElementById(sectionId);
-      sectionElem.addEventListener("scroll", () => {
+      console.log(sectionElem);
+      window.addEventListener("scroll", () => {
+        console.log("scrolling");
         if (isScrolledIntoView(sectionElem)) {
+          console.log("found element");
           setStartAnimation(true);
         }
       });
@@ -27,7 +30,7 @@ const TypeFadeToggler = ({ sectionId, typewriterText, ChildComponent }) => {
 
   useEffect(() => {
     if (startAnimation) {
-      let renderedText = typewriterText + " ";
+      let renderedText = typewriterText;
 
       if (carriage === renderedText.length) {
         setTimeout(() => {

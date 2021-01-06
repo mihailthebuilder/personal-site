@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import TypeFadeToggler from "./components/TypeFadeToggler";
 
 import Landing from "./components/Landing";
+import About from "./components/About";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,11 @@ function App() {
         sectionId="landing"
         typewriterText="FRONT-END DEVELOPER."
         ChildComponent={Landing}
+      />
+      <TypeFadeToggler
+        sectionId="about"
+        typewriterText="ABOUT."
+        ChildComponent={About}
       />
     </div>
   );

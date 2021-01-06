@@ -47,12 +47,16 @@
 
     nav {
       font-size: 10vw;
+
+      li {
+        line-height: 180%;
+      }
     }
   }
 
   .landing-title-wrapper {
     font-size: 5.5vw;
-    align-self: end;
-    margin-bottom: 10rem;
+    align-self: center;
+    margin-bottom: 6rem;
   }
 }

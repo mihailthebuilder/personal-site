@@ -24,6 +24,7 @@
       li:hover {
         color: $carolina-blue;
         transition: 0.1s;
+        padding-right: 1rem;
       }
     }
   }
@@ -37,6 +38,65 @@
 
 .landing-title-role {
   color: $bright-green;
+}
+
+.typewriter-cursor {
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+@-moz-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+@-webkit-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+@-ms-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+@-o-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: inherit;
+  }
+}
+
+.nav-hide {
+  opacity: 0;
+}
+
+.nav-show {
+  opacity: 100%;
+  transition: 0.3s;
 }
 
 @media (max-width: $tablet-screen) {

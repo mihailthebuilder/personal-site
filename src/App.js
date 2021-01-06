@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import TypeFadeToggler from "./components/TypeFadeToggler";
 
-import Landing from "./components/Landing/Landing.jsx";
+import Landing from "./components/Landing";
 
 function App() {
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <TypeFadeToggler
-        sectionId="landing-section"
+        sectionId="landing"
         typewriterText="FRONT-END DEVELOPER."
         ChildComponent={Landing}
       />

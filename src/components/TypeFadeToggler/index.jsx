@@ -13,7 +13,7 @@ const TypeFadeToggler = ({ sectionId, typewriterText, ChildComponent }) => {
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
-    if (sectionId === "landing-section") {
+    if (sectionId === "landing") {
       setStartAnimation(true);
     } else {
       let sectionElem = document.getElementById(sectionId);

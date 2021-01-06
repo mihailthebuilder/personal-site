@@ -2,7 +2,7 @@ import "./Landing.scss";
 
 const Landing = ({ typewriterText, opacity }) => {
   return (
-    <section id="landing-section">
+    <section id="landing">
       <div className="landing-title-wrapper">
         <div className="landing-title-name">MIHAIL MARIAN,</div>
         <div className="landing-title-role">

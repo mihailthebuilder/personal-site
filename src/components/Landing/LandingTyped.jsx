@@ -1,3 +1,5 @@
+import "./Landing.scss";
+
 const LandingTyped = ({ typewriterText }) => {
   return (
     <div className="landing-title-wrapper">

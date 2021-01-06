@@ -1,7 +1,6 @@
 import { sleep, isScrolledIntoView } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
 import "./TypeFadeToggler.scss";
-import "./Landing.scss";
 
 const TypeFadeToggler = ({
   sectionId,

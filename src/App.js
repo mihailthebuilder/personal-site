@@ -4,8 +4,7 @@ import { useEffect } from "react";
 
 import TypeFadeToggler from "./components/TypeFadeToggler";
 
-import LandingContent from "./components/Landing/LandingContent";
-import LandingTyped from "./components/Landing/LandingTyped";
+import Landing from "./components/Landing/Landing.jsx";
 
 function App() {
   useEffect(() => {
@@ -25,8 +24,7 @@ function App() {
       <TypeFadeToggler
         sectionId="landing-section"
         typewriterText="FRONT-END DEVELOPER."
-        TitleComponent={LandingTyped}
-        ContentComponent={LandingContent}
+        ChildComponent={Landing}
       />
     </div>
   );

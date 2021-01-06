@@ -2,12 +2,7 @@ import { sleep, isScrolledIntoView } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
 import "./TypeFadeToggler.scss";
 
-const TypeFadeToggler = ({
-  sectionId,
-  typewriterText,
-  TitleComponent,
-  ContentComponent,
-}) => {
+const TypeFadeToggler = ({ sectionId, typewriterText, ChildComponent }) => {
   const [opacity, setOpacity] = useState("component-hide");
 
   const [{ content, carriage }, setContent] = useState({
@@ -54,12 +49,7 @@ const TypeFadeToggler = ({
     }
   }, [content, carriage, typewriterText, startAnimation]);
 
-  return (
-    <section id={sectionId}>
-      <TitleComponent typewriterText={content} />
-      <ContentComponent opacity={opacity} />
-    </section>
-  );
+  return <ChildComponent typewriterText={content} opacity={opacity} />;
 };
 
 export default TypeFadeToggler;

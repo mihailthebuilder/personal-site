@@ -1,3 +1,6 @@
+import "./TypedText.scss";
+import { sleep } from "../../resources/functions.js";
+
 import { useState, useEffect } from "react";
 
 const TypedText = ({ text }) => {
@@ -10,7 +13,10 @@ const TypedText = ({ text }) => {
     let renderedText = text + " ";
 
     if (carriage === renderedText.length) return;
-    const delay = setTimeout(() => {
+    const delay = setTimeout(async () => {
+      if (content === "") {
+        await sleep(2000);
+      }
       setContent({
         content: content + renderedText[carriage],
         carriage: carriage + 1,
@@ -19,7 +25,12 @@ const TypedText = ({ text }) => {
     }, 70);
   }, [content, text, carriage]);
 
-  return <span>{content}</span>;
+  return (
+    <div>
+      <span>{content}</span>
+      <span className="typewriter-cursor">|</span>
+    </div>
+  );
 };
 
 export default TypedText;

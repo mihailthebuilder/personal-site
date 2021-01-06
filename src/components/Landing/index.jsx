@@ -32,9 +32,15 @@ const Landing = ({ typewriterText, startCompAnim }) => {
       </div>
       <nav>
         <ul>
-          <li className={slideAbout}>ABOUT</li>
-          <li className={slideProjects}>PROJECTS</li>
-          <li className={slideContact}>CONTACT</li>
+          <li className={slideAbout}>
+            <a href="#about">ABOUT</a>
+          </li>
+          <li className={slideProjects}>
+            <a href="#projects">PROJECTS</a>
+          </li>
+          <li className={slideContact}>
+            <a href="#contact">CONTACT</a>
+          </li>
         </ul>
       </nav>
     </section>

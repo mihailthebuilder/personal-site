@@ -2,8 +2,10 @@ import "./App.scss";
 import fire from "./resources/fire.js";
 import { useEffect } from "react";
 
-import Landing from "./components/Landing";
-import About from "./components/About";
+import TypeFadeToggler from "./components/TypeFadeToggler";
+
+import LandingContent from "./components/Landing/LandingContent";
+import LandingTyped from "./components/Landing/LandingTyped";
 
 function App() {
   useEffect(() => {
@@ -20,8 +22,12 @@ function App() {
 
   return (
     <div>
-      <Landing />
-      <About />
+      <TypeFadeToggler
+        sectionId="landing-section"
+        typewriterText="FRONT-END DEVELOPER."
+        TitleComponent={LandingTyped}
+        ContentComponent={LandingContent}
+      />
     </div>
   );
 }

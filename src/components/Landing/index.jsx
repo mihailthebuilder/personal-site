@@ -1,4 +1,3 @@
-import "./Landing.scss";
 import { sleep } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
 

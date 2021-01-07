@@ -1,4 +1,3 @@
-import "./App.scss";
 import fire from "./resources/fire.js";
 import { useEffect } from "react";
 

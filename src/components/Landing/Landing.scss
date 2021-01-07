@@ -8,7 +8,7 @@
   align-items: center;
 
   nav {
-    font-size: 5vw;
+    font-size: 5.5vw;
     text-align: right;
 
     ul {
@@ -43,7 +43,7 @@
 
 .landing-title-role {
   color: $bright-green;
-  font-family: ShareTechMono;
+  font-family: ShareTechMono, monospace;
 }
 
 .slide-out {
@@ -62,7 +62,7 @@
     align-items: unset;
 
     nav {
-      font-size: 10vw;
+      font-size: 9vw;
 
       li {
         line-height: 180%;

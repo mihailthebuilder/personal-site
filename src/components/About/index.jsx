@@ -38,16 +38,33 @@ const About = ({ typewriterText, startCompAnim }) => {
               in React web apps that are powered by Firebase backend services.
             </p>
             <p>
-              I taught myself how to code without paying for any course, so I'm
-              more than capable of learning any new, complex concepts on my own.
+              I taught myself how to code without paying for any course, so it's
+              safe to say that I can learn any new, complex concepts on my own.
               My previous life in software sales has also made me great at
               teamwork and effective communication. Last but not least, I can
               understand product-market strategies very well, having worked on a
-              number of startups.
+              number of B2B and B2C startups.
             </p>
           </div>
         </div>
-        <div className="competencies-title">COMPETENCIES</div>
+        <div className="competencies-container">
+          <div className="competencies-title">COMPETENCIES</div>
+          <div>
+            <div>
+              <h3>Languages & Frameworks</h3>
+              <p>
+                JavaScript, React, jQuery, HTML, CSS, Sass, Bootstrap 4, SQL
+              </p>
+            </div>
+            <div>
+              <h3>Development Tools & Software</h3>
+              <p>
+                Firebase, Git, GitHub, GitHub Pages, NPM, Webpack, Visual Studio
+                Code, Figma, Webflow
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

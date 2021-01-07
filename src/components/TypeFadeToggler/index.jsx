@@ -2,7 +2,11 @@ import { sleep, isScrolledIntoView } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
 import "./TypeFadeToggler.scss";
 
-const TypeFadeToggler = ({ sectionId, typewriterText, ChildComponent }) => {
+const TypeFadeToggler = ({
+  selectorAnimationListen,
+  typewriterText,
+  ChildComponent,
+}) => {
   const [{ content, carriage }, setContent] = useState({
     content: "",
     carriage: 0,
@@ -13,20 +17,18 @@ const TypeFadeToggler = ({ sectionId, typewriterText, ChildComponent }) => {
   const [startCompAnim, setStartCompAnim] = useState(false);
 
   useEffect(() => {
-    if (sectionId === "landing") {
+    const elemListen = document.querySelector(selectorAnimationListen);
+    if (isScrolledIntoView(elemListen)) {
+      console.log(elemListen, "in view");
       setStartAnimation(true);
     } else {
-      let sectionElem = document.getElementById(sectionId);
-      console.log(sectionElem);
       window.addEventListener("scroll", () => {
-        console.log("scrolling");
-        if (isScrolledIntoView(sectionElem)) {
-          console.log("found element");
+        if (isScrolledIntoView(elemListen)) {
           setStartAnimation(true);
         }
       });
     }
-  }, [sectionId]);
+  }, [selectorAnimationListen]);
 
   useEffect(() => {
     if (startAnimation) {

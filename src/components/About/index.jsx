@@ -4,7 +4,7 @@ import ProfileImage from "./ProfileImage.png";
 
 const About = ({ typewriterText, startCompAnim }) => {
   /*
-   const [showImage, setShowImage] = useState("slide-out");
+  const [showImage, setShowImage] = useState("slide-out");
   const [showDescription, setShowDescription] = useState("slide-out");
   const [showCompetencies, setShowCompetencies] = useState("slide-out");
 
@@ -28,8 +28,8 @@ const About = ({ typewriterText, startCompAnim }) => {
         {typewriterText}
         <span className="typewriter-cursor">|</span>
       </div>
-      <div className="about-description">
-        <div className="about-text-image">
+      <div className="about-content">
+        <div className="about-description">
           <img className="about-image" src={ProfileImage} alt="Profile" />
           <div>
             <p>
@@ -47,6 +47,7 @@ const About = ({ typewriterText, startCompAnim }) => {
             </p>
           </div>
         </div>
+        <div className="competencies-title">COMPETENCIES</div>
       </div>
     </section>
   );

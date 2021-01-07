@@ -5,28 +5,45 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 15vw;
+  padding-right: 15vw;
+
+  * {
+    cursor: default;
+  }
 }
 
 .section-title {
   color: $bright-green;
-  font-size: 4vw;
+  font-size: 3vw;
   font-family: ShareTechMono, monospace;
 }
 
-.about-description {
+.about-content {
   color: $white-custom;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   font-family: Prompt-Regular, sans-serif;
-  margin-top: 5vw;
+  margin-top: 7vw;
 }
 
-.about-text-image {
+.about-description {
   display: grid;
   grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
   column-gap: 7vw;
 
   img {
-    width: 20vw;
+    width: 15vw;
     align-self: center;
   }
+}
+
+.competencies-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.competencies-title {
+  background: $rich-black;
+  padding: 1vw;
 }

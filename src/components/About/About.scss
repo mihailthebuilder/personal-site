@@ -56,10 +56,19 @@
 
 .competencies-title {
   background: $rich-black;
-  font-family: Prompt-Medium, sans-serif;
+  font-family: Prompt-SemiBold, sans-serif;
   padding: 0.5vw 1vw;
   width: fit-content;
 
   font-size: 1.8vw;
   letter-spacing: 3px;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: 0.2s;
 }

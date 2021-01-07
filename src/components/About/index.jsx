@@ -1,26 +1,32 @@
-//import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { sleep } from "../../resources/functions.js";
 import "./About.scss";
 import ProfileImage from "./ProfileImage.png";
 
 const About = ({ typewriterText, startCompAnim }) => {
-  /*
-  const [showImage, setShowImage] = useState("slide-out");
-  const [showDescription, setShowDescription] = useState("slide-out");
-  const [showCompetencies, setShowCompetencies] = useState("slide-out");
+  const [showImage, setShowImage] = useState("fade-out");
+  const [showDescription, setShowDescription] = useState("fade-out");
+  const [showCompetenciesTitle, setShowCompetenciesTitle] = useState(
+    "fade-out"
+  );
+  const [showCompetenciesContent, setShowCompetenciesContent] = useState(
+    "fade-out"
+  );
 
- 
   useEffect(() => {
     if (startCompAnim) {
       animation();
     }
   }, [startCompAnim]);
   const animation = async () => {
-    setSlideAbout("slide-in");
-    await sleep(200);
-    setSlideProjects("slide-in");
-    await sleep(200);
-    setSlideContact("slide-in");
-  };*/
+    setShowImage("fade-in");
+    await sleep(400);
+    setShowDescription("fade-in");
+    await sleep(400);
+    setShowCompetenciesTitle("fade-in");
+    await sleep(400);
+    setShowCompetenciesContent("fade-in");
+  };
 
   return (
     <section id="about">
@@ -30,8 +36,12 @@ const About = ({ typewriterText, startCompAnim }) => {
       </div>
       <div className="about-content">
         <div className="about-description">
-          <img className="about-image" src={ProfileImage} alt="Profile" />
-          <div>
+          <img
+            className={`about-image ${showImage}`}
+            src={ProfileImage}
+            alt="Profile"
+          />
+          <div className={showDescription}>
             <p>
               Hi, my name is Mihail and I'm a front-end developer who loves
               building UIs that work splendidly across all devices. I specialise
@@ -48,8 +58,10 @@ const About = ({ typewriterText, startCompAnim }) => {
           </div>
         </div>
         <div className="competencies-container">
-          <div className="competencies-title">COMPETENCIES</div>
-          <div>
+          <div className={`competencies-title ${showCompetenciesTitle}`}>
+            Competencies
+          </div>
+          <div className={showCompetenciesContent}>
             <div>
               <h3>Languages & Frameworks</h3>
               <p>

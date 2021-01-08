@@ -14,4 +14,23 @@ function isScrolledIntoView(el) {
   return isVisible;
 }
 
-export { sleep, isScrolledIntoView };
+const startAnimationFunction = (
+  animationBeforeEnded,
+  setAnimationStart,
+  elementSelector
+) => {
+  if (animationBeforeEnded) {
+    const element = document.querySelector(elementSelector);
+    if (isScrolledIntoView(element)) {
+      setAnimationStart(true);
+    } else {
+      window.addEventListener("scroll", () => {
+        if (isScrolledIntoView(element)) {
+          setAnimationStart(true);
+        }
+      });
+    }
+  }
+};
+
+export { sleep, isScrolledIntoView, startAnimationFunction };

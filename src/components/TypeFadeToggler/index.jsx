@@ -1,4 +1,8 @@
-import { sleep, isScrolledIntoView } from "../../resources/functions.js";
+import {
+  sleep,
+  isScrolledIntoView,
+  startAnimationFunction,
+} from "../../resources/functions.js";
 import { useState, useEffect } from "react";
 import "./TypeFadeToggler.scss";
 
@@ -17,17 +21,7 @@ const TypeFadeToggler = ({
   const [startCompAnim, setStartCompAnim] = useState(false);
 
   useEffect(() => {
-    const elemListen = document.querySelector(selectorAnimationListen);
-    if (isScrolledIntoView(elemListen)) {
-      console.log(elemListen, "in view");
-      setStartAnimation(true);
-    } else {
-      window.addEventListener("scroll", () => {
-        if (isScrolledIntoView(elemListen)) {
-          setStartAnimation(true);
-        }
-      });
-    }
+    startAnimationFunction(true, setStartAnimation, selectorAnimationListen);
   }, [selectorAnimationListen]);
 
   useEffect(() => {

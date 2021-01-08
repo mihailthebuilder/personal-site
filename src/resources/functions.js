@@ -14,9 +14,12 @@ function isScrolledIntoView(el) {
   //const isVisible = elemTop < window.innerHeight && elemBottom >= 0;
 
   const isVisible =
-    elemBottom - elemTop > window.innerHeight / 3
-      ? elemTop < window.innerHeight && elemBottom >= 0
-      : elemTop >= 0 && elemBottom <= window.innerHeight;
+    elemBottom < 0 ||
+    (elemBottom - elemTop > window.innerHeight / 3 &&
+      elemTop < window.innerHeight) ||
+    (elemBottom - elemTop < window.innerHeight / 3 &&
+      elemTop >= 0 &&
+      elemBottom <= window.innerHeight);
 
   return isVisible;
 }

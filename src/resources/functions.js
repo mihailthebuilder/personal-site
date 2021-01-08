@@ -15,18 +15,19 @@ function isScrolledIntoView(el) {
 }
 
 const startAnimationFunction = (
-  animationStart,
   setNextAnimationStart,
-  elementSelector
+  elementSelector,
+  animationStart = true
 ) => {
   if (animationStart) {
     const element = document.querySelector(elementSelector);
     if (isScrolledIntoView(element)) {
       setNextAnimationStart(true);
     } else {
-      window.addEventListener("scroll", () => {
+      window.addEventListener("scroll", function handler() {
         if (isScrolledIntoView(element)) {
           setNextAnimationStart(true);
+          this.removeEventListener("scroll", handler);
         }
       });
     }

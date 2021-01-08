@@ -13,7 +13,7 @@ const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
   const [startNextAnimation, setStartNextAnimation] = useState(false);
 
   useEffect(() => {
-    startAnimationFunction(true, setStartTypewriter, selectorTypewriter);
+    startAnimationFunction(setStartTypewriter, selectorTypewriter);
   }, [selectorTypewriter]);
 
   useEffect(() => {

@@ -70,7 +70,7 @@ const About = ({ typewriterText, startAnimations }) => {
               </p>
             </div>
             <div>
-              <h3>Development Tools & Software</h3>
+              <h3>Dev Tools & Software</h3>
               <p>
                 Firebase, Git, GitHub, GitHub Pages, NPM, Webpack, Visual Studio
                 Code, Figma, Webflow

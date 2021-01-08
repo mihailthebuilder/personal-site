@@ -3,7 +3,7 @@ import { sleep } from "../../resources/functions.js";
 import "./About.scss";
 import ProfileImage from "./ProfileImage.png";
 
-const About = ({ typewriterText, startCompAnim }) => {
+const About = ({ typewriterText, startAnimations }) => {
   const [showImage, setShowImage] = useState("fade-out");
   const [showDescription, setShowDescription] = useState("fade-out");
   const [showCompetenciesTitle, setShowCompetenciesTitle] = useState(
@@ -14,10 +14,11 @@ const About = ({ typewriterText, startCompAnim }) => {
   );
 
   useEffect(() => {
-    if (startCompAnim) {
+    if (startAnimations) {
       animation();
     }
-  }, [startCompAnim]);
+  }, [startAnimations]);
+
   const animation = async () => {
     setShowImage("fade-in");
     await sleep(400);

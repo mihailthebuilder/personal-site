@@ -22,12 +22,12 @@ function App() {
   return (
     <div>
       <TypeFadeToggler
-        selectorAnimationListen=".landing-title-role"
+        selectorTypewriter=".landing-title-role"
         typewriterText="FRONT-END DEVELOPER."
         ChildComponent={Landing}
       />
       <TypeFadeToggler
-        selectorAnimationListen=".about-image"
+        selectorTypewriter=".about-image"
         typewriterText="about."
         ChildComponent={About}
       />

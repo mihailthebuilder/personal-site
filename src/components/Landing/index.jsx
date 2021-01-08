@@ -2,16 +2,16 @@ import "./Landing.scss";
 import { useState, useEffect } from "react";
 import { sleep } from "../../resources/functions.js";
 
-const Landing = ({ typewriterText, startCompAnim }) => {
+const Landing = ({ typewriterText, startAnimations }) => {
   const [slideAbout, setSlideAbout] = useState("slide-out");
   const [slideProjects, setSlideProjects] = useState("slide-out");
   const [slideContact, setSlideContact] = useState("slide-out");
 
   useEffect(() => {
-    if (startCompAnim) {
+    if (startAnimations) {
       animation();
     }
-  }, [startCompAnim]);
+  }, [startAnimations]);
 
   const animation = async () => {
     setSlideAbout("slide-in");

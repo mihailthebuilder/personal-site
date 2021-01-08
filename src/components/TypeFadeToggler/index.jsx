@@ -1,13 +1,9 @@
-import {
-  sleep,
-  isScrolledIntoView,
-  startAnimationFunction,
-} from "../../resources/functions.js";
+import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
 import "./TypeFadeToggler.scss";
 
 const TypeFadeToggler = ({
-  selectorAnimationListen,
+  selectorTypewriter,
   typewriterText,
   ChildComponent,
 }) => {
@@ -16,21 +12,19 @@ const TypeFadeToggler = ({
     carriage: 0,
   });
 
-  const [startAnimation, setStartAnimation] = useState(false);
+  const [startTypewriter, setStartTypewriter] = useState(false);
 
-  const [startCompAnim, setStartCompAnim] = useState(false);
-
-  useEffect(() => {
-    startAnimationFunction(true, setStartAnimation, selectorAnimationListen);
-  }, [selectorAnimationListen]);
+  const [startNextAnimation, setStartNextAnimation] = useState(false);
 
   useEffect(() => {
-    if (startAnimation) {
-      let renderedText = typewriterText;
+    startAnimationFunction(true, setStartTypewriter, selectorTypewriter);
+  }, [selectorTypewriter]);
 
-      if (carriage === renderedText.length) {
+  useEffect(() => {
+    if (startTypewriter) {
+      if (carriage === typewriterText.length) {
         setTimeout(() => {
-          setStartCompAnim(true);
+          setStartNextAnimation(true);
         }, 300);
 
         return;
@@ -40,16 +34,19 @@ const TypeFadeToggler = ({
           await sleep(2000);
         }
         setContent({
-          content: content + renderedText[carriage],
+          content: content + typewriterText[carriage],
           carriage: carriage + 1,
         });
         clearTimeout(delay);
       }, 70);
     }
-  }, [content, carriage, typewriterText, startAnimation]);
+  }, [content, carriage, typewriterText, startTypewriter]);
 
   return (
-    <ChildComponent typewriterText={content} startCompAnim={startCompAnim} />
+    <ChildComponent
+      typewriterText={content}
+      startAnimations={startNextAnimation}
+    />
   );
 };
 

@@ -11,7 +11,13 @@ function isScrolledIntoView(el) {
   //const isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
 
   // Partially visible elements return true:
-  const isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+  //const isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+
+  const isVisible =
+    elemBottom - elemTop > window.innerHeight / 3
+      ? elemTop < window.innerHeight && elemBottom >= 0
+      : elemTop >= 0 && elemBottom <= window.innerHeight;
+
   return isVisible;
 }
 
@@ -22,7 +28,9 @@ const startAnimationFunction = (elementSelector, setAnimationStep) => {
   } else {
     window.addEventListener("scroll", function handler() {
       if (isScrolledIntoView(element)) {
-        setAnimationStep((previousValue) => previousValue + 1);
+        setTimeout(() => {
+          setAnimationStep((previousValue) => previousValue + 1);
+        }, 200);
         this.removeEventListener("scroll", handler);
       }
     });

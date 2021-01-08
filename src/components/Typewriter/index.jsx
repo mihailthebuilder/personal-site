@@ -8,8 +8,6 @@ const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
     carriage: 0,
   });
 
-  console.log("test");
-
   const [startTypewriter, setStartTypewriter] = useState(false);
 
   const [startNextAnimation, setStartNextAnimation] = useState(false);

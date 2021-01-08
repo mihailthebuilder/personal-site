@@ -4,14 +4,7 @@ import "./About.scss";
 import ProfileImage from "./ProfileImage.png";
 
 const About = ({ typewriterText, startAnimations }) => {
-  const [showImage, setShowImage] = useState("fade-out");
-  const [showDescription, setShowDescription] = useState("fade-out");
-  const [showCompetenciesTitle, setShowCompetenciesTitle] = useState(
-    "fade-out"
-  );
-  const [showCompetenciesContent, setShowCompetenciesContent] = useState(
-    "fade-out"
-  );
+  const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
     if (startAnimations) {
@@ -20,13 +13,13 @@ const About = ({ typewriterText, startAnimations }) => {
   }, [startAnimations]);
 
   const animation = async () => {
-    setShowImage("fade-in");
+    setAnimationStep((previousValue) => previousValue + 1);
     await sleep(400);
-    setShowDescription("fade-in");
+    setAnimationStep((previousValue) => previousValue + 1);
     await sleep(400);
-    setShowCompetenciesTitle("fade-in");
+    setAnimationStep((previousValue) => previousValue + 1);
     await sleep(400);
-    setShowCompetenciesContent("fade-in");
+    setAnimationStep((previousValue) => previousValue + 1);
   };
 
   return (
@@ -38,11 +31,13 @@ const About = ({ typewriterText, startAnimations }) => {
       <div className="about-content">
         <div className="about-description">
           <img
-            className={`about-image ${showImage}`}
+            className={`about-image ${
+              animationStep >= 1 ? "fade-in" : "fade-out"
+            }`}
             src={ProfileImage}
             alt="Profile"
           />
-          <div className={showDescription}>
+          <div className={animationStep >= 2 ? "fade-in" : "fade-out"}>
             <p>
               Hi, my name is Mihail and I'm a front-end developer who loves
               building UIs that work splendidly across all devices. I specialise
@@ -59,10 +54,14 @@ const About = ({ typewriterText, startAnimations }) => {
           </div>
         </div>
         <div className="competencies-container">
-          <div className={`competencies-title ${showCompetenciesTitle}`}>
+          <div
+            className={`competencies-title ${
+              animationStep >= 3 ? "fade-in" : "fade-out"
+            }`}
+          >
             Competencies
           </div>
-          <div className={showCompetenciesContent}>
+          <div className={animationStep >= 4 ? "fade-in" : "fade-out"}>
             <div>
               <h3>Languages & Frameworks</h3>
               <p>

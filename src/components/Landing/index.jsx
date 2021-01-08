@@ -1,6 +1,6 @@
 import "./Landing.scss";
 import { useState, useEffect } from "react";
-import { sleep } from "../../resources/functions.js";
+import { sleep, startAnimationFunction } from "../../resources/functions.js";
 
 const Landing = ({ typewriterText, startAnimations }) => {
   const [slideAbout, setSlideAbout] = useState("slide-out");
@@ -8,17 +8,17 @@ const Landing = ({ typewriterText, startAnimations }) => {
   const [slideContact, setSlideContact] = useState("slide-out");
 
   useEffect(() => {
-    if (startAnimations) {
-      animation();
-    }
+    animation(startAnimations);
   }, [startAnimations]);
 
-  const animation = async () => {
-    setSlideAbout("slide-in");
-    await sleep(200);
-    setSlideProjects("slide-in");
-    await sleep(200);
-    setSlideContact("slide-in");
+  const animation = async (startAnimations) => {
+    if (startAnimations) {
+      setSlideAbout("slide-in");
+      await sleep(200);
+      setSlideProjects("slide-in");
+      await sleep(200);
+      setSlideContact("slide-in");
+    }
   };
 
   return (

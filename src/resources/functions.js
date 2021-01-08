@@ -14,23 +14,18 @@ function isScrolledIntoView(el) {
   return isVisible;
 }
 
-const startAnimationFunction = (
-  setNextAnimationStart,
-  elementSelector,
-  animationStart = true
-) => {
-  if (animationStart) {
-    const element = document.querySelector(elementSelector);
-    if (isScrolledIntoView(element)) {
-      setNextAnimationStart(true);
-    } else {
-      window.addEventListener("scroll", function handler() {
-        if (isScrolledIntoView(element)) {
-          setNextAnimationStart(true);
-          this.removeEventListener("scroll", handler);
-        }
-      });
-    }
+const startAnimationFunction = (elementSelector, setAnimationStep) => {
+  const element = document.querySelector(elementSelector);
+  if (isScrolledIntoView(element)) {
+    console.log(element, "is in view");
+    setAnimationStep((previousValue) => previousValue + 1);
+  } else {
+    window.addEventListener("scroll", function handler() {
+      if (isScrolledIntoView(element)) {
+        setAnimationStep((previousValue) => previousValue + 1);
+        this.removeEventListener("scroll", handler);
+      }
+    });
   }
 };
 

@@ -8,16 +8,18 @@ const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
     carriage: 0,
   });
 
-  const [startTypewriter, setStartTypewriter] = useState(false);
-
   const [startNextAnimation, setStartNextAnimation] = useState(false);
 
-  useEffect(() => {
-    startAnimationFunction(setStartTypewriter, selectorTypewriter);
-  }, [selectorTypewriter]);
+  const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
-    if (startTypewriter) {
+    if (animationStep === 0) {
+      startAnimationFunction(selectorTypewriter, setAnimationStep);
+    }
+  }, [animationStep, selectorTypewriter]);
+
+  useEffect(() => {
+    if (animationStep === 1) {
       if (carriage === typewriterText.length) {
         setTimeout(() => {
           setStartNextAnimation(true);
@@ -36,7 +38,7 @@ const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
         clearTimeout(delay);
       }, 70);
     }
-  }, [content, carriage, typewriterText, startTypewriter]);
+  }, [content, carriage, typewriterText, animationStep]);
 
   return (
     <ChildComponent

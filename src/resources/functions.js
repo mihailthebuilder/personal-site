@@ -17,7 +17,6 @@ function isScrolledIntoView(el) {
 const startAnimationFunction = (elementSelector, setAnimationStep) => {
   const element = document.querySelector(elementSelector);
   if (isScrolledIntoView(element)) {
-    console.log(element, "is in view");
     setAnimationStep((previousValue) => previousValue + 1);
   } else {
     window.addEventListener("scroll", function handler() {

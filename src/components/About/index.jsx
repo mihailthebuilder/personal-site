@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { sleep } from "../../resources/functions.js";
+import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import "./About.scss";
 import ProfileImage from "./ProfileImage.png";
 
@@ -7,20 +7,20 @@ const About = ({ typewriterText, startAnimations }) => {
   const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
+    const animation = async () => {
+      startAnimationFunction(".about-image", setAnimationStep);
+      await sleep(400);
+      startAnimationFunction(".about-description>div", setAnimationStep);
+      await sleep(400);
+      startAnimationFunction(".competencies-title", setAnimationStep);
+      await sleep(400);
+      startAnimationFunction(".competencies-detail", setAnimationStep);
+    };
+
     if (startAnimations) {
       animation();
     }
   }, [startAnimations]);
-
-  const animation = async () => {
-    setAnimationStep((previousValue) => previousValue + 1);
-    await sleep(400);
-    setAnimationStep((previousValue) => previousValue + 1);
-    await sleep(400);
-    setAnimationStep((previousValue) => previousValue + 1);
-    await sleep(400);
-    setAnimationStep((previousValue) => previousValue + 1);
-  };
 
   return (
     <section id="about">
@@ -61,7 +61,11 @@ const About = ({ typewriterText, startAnimations }) => {
           >
             Competencies
           </div>
-          <div className={animationStep >= 4 ? "fade-in" : "fade-out"}>
+          <div
+            className={`competencies-detail ${
+              animationStep >= 4 ? "fade-in" : "fade-out"
+            }`}
+          >
             <div>
               <h3>Languages & Frameworks</h3>
               <p>

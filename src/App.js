@@ -27,7 +27,7 @@ function App() {
         ChildComponent={Landing}
       />
       <Typewriter
-        selectorTypewriter=".about-image"
+        selectorTypewriter="#about>.section-title"
         typewriterText="about."
         ChildComponent={About}
       />

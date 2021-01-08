@@ -1,12 +1,8 @@
 import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
-import "./TypeFadeToggler.scss";
+import "./Typewriter.scss";
 
-const TypeFadeToggler = ({
-  selectorTypewriter,
-  typewriterText,
-  ChildComponent,
-}) => {
+const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
   const [{ content, carriage }, setContent] = useState({
     content: "",
     carriage: 0,
@@ -50,4 +46,4 @@ const TypeFadeToggler = ({
   );
 };
 
-export default TypeFadeToggler;
+export default Typewriter;

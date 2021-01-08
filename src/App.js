@@ -1,7 +1,7 @@
 import fire from "./resources/fire.js";
 import { useEffect } from "react";
 
-import TypeFadeToggler from "./components/TypeFadeToggler";
+import Typewriter from "./components/Typewriter";
 
 import Landing from "./components/Landing";
 import About from "./components/About";
@@ -21,12 +21,12 @@ function App() {
 
   return (
     <div>
-      <TypeFadeToggler
+      <Typewriter
         selectorTypewriter=".landing-title-role"
         typewriterText="FRONT-END DEVELOPER."
         ChildComponent={Landing}
       />
-      <TypeFadeToggler
+      <Typewriter
         selectorTypewriter=".about-image"
         typewriterText="about."
         ChildComponent={About}

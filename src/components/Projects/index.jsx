@@ -39,9 +39,13 @@ const Projects = ({ typewriterText, startAnimations }) => {
     }
   }, [projectIndex, projectList]);
 
-  useEffect(() => {
-    console.log(focusProject);
-  }, [focusProject]);
+  const getOlderProject = () => {
+    setProjectIndex((previousValue) => previousValue + 1);
+  };
+
+  const getNewerProject = () => {
+    setProjectIndex((previousValue) => previousValue - 1);
+  };
 
   return (
     <section id="projects" className="section-padding">
@@ -52,6 +56,10 @@ const Projects = ({ typewriterText, startAnimations }) => {
       <div className="project-chooser">
         <img src={focusProject.image_src} alt="Project" />
       </div>
+      {projectIndex >= 1 && <button onClick={getNewerProject}>Back</button>}
+      {projectIndex <= projectList.length - 2 && (
+        <button onClick={getOlderProject}>Next</button>
+      )}
     </section>
   );
 };

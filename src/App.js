@@ -1,24 +1,10 @@
-import fire from "./resources/fire.js";
-import { useEffect } from "react";
-
 import Typewriter from "./components/Typewriter";
 
 import Landing from "./components/Landing";
 import About from "./components/About";
+import Projects from "./components/Projects";
 
 function App() {
-  useEffect(() => {
-    fire
-      .firestore()
-      .collection("testing")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          console.log(doc.id, "=>", doc.data());
-        });
-      });
-  }, []);
-
   return (
     <div>
       <Typewriter
@@ -30,6 +16,11 @@ function App() {
         selectorTypewriter="#about>.section-title"
         typewriterText="about."
         ChildComponent={About}
+      />
+      <Typewriter
+        selectorTypewriter="#projects>.section-title"
+        typewriterText="projects."
+        ChildComponent={Projects}
       />
     </div>
   );

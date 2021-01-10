@@ -1,3 +1,5 @@
+@import "../../resources/variables.scss";
+
 .typewriter-cursor {
   animation: 1s blink step-end infinite;
 }
@@ -45,5 +47,17 @@
   }
   50% {
     color: inherit;
+  }
+}
+
+.section-title {
+  color: $bright-green;
+  font-size: 4rem;
+  font-family: ShareTechMono, monospace;
+}
+
+@media (max-width: $mobile-screen) {
+  .section-title {
+    font-size: 2rem;
   }
 }

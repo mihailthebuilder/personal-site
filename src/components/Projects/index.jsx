@@ -51,7 +51,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
   };
 
   return (
-    <section id="projects" className="section-padding">
+    <section id="projects" className="section-styling">
       <div className="section-title">
         {typewriterText}
         <span className="typewriter-cursor">|</span>

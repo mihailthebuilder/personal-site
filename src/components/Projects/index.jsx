@@ -64,12 +64,25 @@ const Projects = ({ typewriterText, startAnimations }) => {
         ) : (
           <div></div>
         )}
-        <img src={focusProject.image_src} alt="Project" />
-        {projectIndex <= projectList.length - 2 && (
+        <div
+          className="project-image"
+          style={{ backgroundImage: `url(${focusProject.image_src})` }}
+        >
+          <div className="project-links-wrapper">
+            <a href={focusProject.website_link}>Website</a>
+            <a href={focusProject.github_link}>GitHub</a>
+          </div>
+        </div>
+        {projectIndex <= projectList.length - 2 ? (
           <button onClick={getOlderProject}>
             <RightArrow />
           </button>
+        ) : (
+          <div></div>
         )}
+        <div></div>
+        <div>Hello</div>
+        <div></div>
       </div>
     </section>
   );

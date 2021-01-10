@@ -9,7 +9,6 @@
   grid-template-columns: 9rem 50rem 9rem;
   grid-template-rows: 30rem auto;
   column-gap: 5rem;
-  row-gap: 3rem;
   margin-top: 1rem;
 
   button {
@@ -42,13 +41,20 @@
   a {
     text-decoration: none;
     color: $white-custom;
-    font-size: 2rem;
     transition: 0.2s;
     padding: 1rem 2rem;
+
+    h3 {
+      margin: 0;
+    }
   }
 
   a:hover {
     color: $carolina-blue;
     transition: 0.2s;
   }
+}
+
+.project-info {
+  cursor: default;
 }

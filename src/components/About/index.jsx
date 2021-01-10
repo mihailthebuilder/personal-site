@@ -11,8 +11,8 @@ const About = ({ typewriterText, startAnimations }) => {
       startAnimationFunction(".about-image", setAnimationStep);
       startAnimationFunction(".about-description>div", setAnimationStep);
       await sleep(200);
-      startAnimationFunction(".competencies-title", setAnimationStep);
-      startAnimationFunction(".competencies-detail", setAnimationStep);
+      startAnimationFunction(".competencies-container>h2", setAnimationStep);
+      startAnimationFunction(".competencies-container>div", setAnimationStep);
     };
 
     if (startAnimations) {
@@ -53,18 +53,10 @@ const About = ({ typewriterText, startAnimations }) => {
           </div>
         </div>
         <div className="competencies-container">
-          <div
-            className={`competencies-title ${
-              animationStep >= 3 ? "about-show" : "about-hide"
-            }`}
-          >
+          <h2 className={animationStep >= 3 ? "about-show" : "about-hide"}>
             Competencies
-          </div>
-          <div
-            className={`competencies-detail ${
-              animationStep >= 4 ? "about-show" : "about-hide"
-            }`}
-          >
+          </h2>
+          <div className={animationStep >= 4 ? "about-show" : "about-hide"}>
             <div>
               <h3>Languages & Frameworks</h3>
               <p>

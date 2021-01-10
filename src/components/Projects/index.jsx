@@ -69,8 +69,12 @@ const Projects = ({ typewriterText, startAnimations }) => {
           style={{ backgroundImage: `url(${focusProject.image_src})` }}
         >
           <div className="project-links-wrapper">
-            <a href={focusProject.website_link}>Website</a>
-            <a href={focusProject.github_link}>GitHub</a>
+            <a href={focusProject.website_link}>
+              <h3>Website</h3>
+            </a>
+            <a href={focusProject.github_link}>
+              <h3>GitHub</h3>
+            </a>
           </div>
         </div>
         {projectIndex <= projectList.length - 2 ? (
@@ -81,8 +85,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div></div>
         )}
         <div></div>
-        <div>
-          <h3>{focusProject.title}</h3>
+        <div className="project-info">
+          <h2>{focusProject.title}</h2>
+          <p>{focusProject.description}</p>
         </div>
         <div></div>
       </div>

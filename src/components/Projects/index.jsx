@@ -64,19 +64,12 @@ const Projects = ({ typewriterText, startAnimations }) => {
         ) : (
           <div></div>
         )}
-        <div
+        <img
           className="project-image"
-          style={{ backgroundImage: `url(${focusProject.image_src})` }}
-        >
-          <div className="project-links-wrapper">
-            <a href={focusProject.website_link}>
-              <h3>Website</h3>
-            </a>
-            <a href={focusProject.github_link}>
-              <h3>GitHub</h3>
-            </a>
-          </div>
-        </div>
+          src={focusProject.image_src}
+          alt={focusProject.title}
+        />
+
         {projectIndex <= projectList.length - 2 ? (
           <button onClick={getOlderProject}>
             <RightArrow />
@@ -88,6 +81,10 @@ const Projects = ({ typewriterText, startAnimations }) => {
         <div className="project-info">
           <h2>{focusProject.title}</h2>
           <p>{focusProject.description}</p>
+          <p>
+            <a href={focusProject.website_link}>Website</a> |{" "}
+            <a href={focusProject.github_link}>GitHub</a>
+          </p>
         </div>
         <div></div>
       </div>

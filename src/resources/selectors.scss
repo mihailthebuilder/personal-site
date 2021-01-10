@@ -1,0 +1,12 @@
+@import "./variables.scss";
+
+.section-padding {
+  padding: 5rem 10vw;
+}
+
+@media (max-width: $mobile-screen) {
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}

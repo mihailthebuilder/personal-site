@@ -23,7 +23,7 @@ const About = ({ typewriterText, startAnimations }) => {
   }, [startAnimations]);
 
   return (
-    <section id="about">
+    <section id="about" className="section-padding">
       <div className="section-title">
         {typewriterText}
         <span className="typewriter-cursor">|</span>

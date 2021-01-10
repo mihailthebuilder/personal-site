@@ -81,7 +81,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div></div>
         )}
         <div></div>
-        <div>Hello</div>
+        <div>
+          <h3>{focusProject.title}</h3>
+        </div>
         <div></div>
       </div>
     </section>

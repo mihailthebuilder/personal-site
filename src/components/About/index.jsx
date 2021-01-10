@@ -9,11 +9,9 @@ const About = ({ typewriterText, startAnimations }) => {
   useEffect(() => {
     const animation = async () => {
       startAnimationFunction(".about-image", setAnimationStep);
-      await sleep(400);
       startAnimationFunction(".about-description>div", setAnimationStep);
-      await sleep(400);
+      await sleep(200);
       startAnimationFunction(".competencies-title", setAnimationStep);
-      await sleep(400);
       startAnimationFunction(".competencies-detail", setAnimationStep);
     };
 
@@ -32,12 +30,12 @@ const About = ({ typewriterText, startAnimations }) => {
         <div className="about-description">
           <img
             className={`about-image ${
-              animationStep >= 1 ? "fade-in" : "fade-out"
+              animationStep >= 1 ? "about-show" : "about-hide"
             }`}
             src={ProfileImage}
             alt="Profile"
           />
-          <div className={animationStep >= 2 ? "fade-in" : "fade-out"}>
+          <div className={animationStep >= 2 ? "about-show" : "about-hide"}>
             <p>
               Hi, my name is Mihail and I'm a front-end developer who loves
               building UIs that work splendidly across all devices. I specialise
@@ -56,14 +54,14 @@ const About = ({ typewriterText, startAnimations }) => {
         <div className="competencies-container">
           <div
             className={`competencies-title ${
-              animationStep >= 3 ? "fade-in" : "fade-out"
+              animationStep >= 3 ? "about-show" : "about-hide"
             }`}
           >
             Competencies
           </div>
           <div
             className={`competencies-detail ${
-              animationStep >= 4 ? "fade-in" : "fade-out"
+              animationStep >= 4 ? "about-show" : "about-hide"
             }`}
           >
             <div>

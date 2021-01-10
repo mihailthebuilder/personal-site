@@ -8,6 +8,7 @@
 
   * {
     cursor: default;
+    overflow: hidden;
   }
 }
 
@@ -57,13 +58,15 @@
   letter-spacing: 3px;
 }
 
-.fade-out {
+.about-hide {
   opacity: 0;
+  transform: translateY(1rem);
 }
 
-.fade-in {
+.about-show {
   opacity: 1;
   transition: 0.2s;
+  transform: translateY(0);
 }
 
 @media (max-width: 1400px) {

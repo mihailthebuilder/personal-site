@@ -30,13 +30,14 @@
 }
 
 .project-links-wrapper {
-  background-color: $rich-black;
+  background-color: $carolina-blue;
   width: fit-content;
   position: absolute;
   bottom: 0;
   right: 0;
   display: grid;
   grid-template-columns: auto auto;
+  box-shadow: 0 0 10px 1px $light-black;
 
   a {
     text-decoration: none;
@@ -50,7 +51,7 @@
   }
 
   a:hover {
-    color: $carolina-blue;
+    color: $bright-green;
     transition: 0.2s;
   }
 }

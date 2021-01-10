@@ -56,10 +56,12 @@
   font-family: ShareTechMono, monospace;
   text-align: center;
   cursor: default;
+  margin-bottom: 5rem;
 }
 
 @media (max-width: $mobile-screen) {
   .section-title {
     font-size: 2rem;
+    margin-bottom: 3rem;
   }
 }

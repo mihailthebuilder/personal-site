@@ -1,6 +1,9 @@
 import fire from "../../resources/fire.js";
 import { useState, useEffect } from "react";
 
+import { ReactComponent as LeftArrow } from "./LeftArrow.svg";
+import { ReactComponent as RightArrow } from "./RightArrow.svg";
+
 import "./Projects.scss";
 
 const Projects = ({ typewriterText, startAnimations }) => {
@@ -56,9 +59,15 @@ const Projects = ({ typewriterText, startAnimations }) => {
       <div className="project-chooser">
         <img src={focusProject.image_src} alt="Project" />
       </div>
-      {projectIndex >= 1 && <button onClick={getNewerProject}>Back</button>}
+      {projectIndex >= 1 && (
+        <button onClick={getNewerProject}>
+          <LeftArrow />
+        </button>
+      )}
       {projectIndex <= projectList.length - 2 && (
-        <button onClick={getOlderProject}>Next</button>
+        <button onClick={getOlderProject}>
+          <RightArrow />
+        </button>
       )}
     </section>
   );

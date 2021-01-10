@@ -57,18 +57,20 @@ const Projects = ({ typewriterText, startAnimations }) => {
         <span className="typewriter-cursor">|</span>
       </div>
       <div className="project-chooser">
+        {projectIndex >= 1 ? (
+          <button onClick={getNewerProject}>
+            <LeftArrow />
+          </button>
+        ) : (
+          <div></div>
+        )}
         <img src={focusProject.image_src} alt="Project" />
+        {projectIndex <= projectList.length - 2 && (
+          <button onClick={getOlderProject}>
+            <RightArrow />
+          </button>
+        )}
       </div>
-      {projectIndex >= 1 && (
-        <button onClick={getNewerProject}>
-          <LeftArrow />
-        </button>
-      )}
-      {projectIndex <= projectList.length - 2 && (
-        <button onClick={getOlderProject}>
-          <RightArrow />
-        </button>
-      )}
     </section>
   );
 };

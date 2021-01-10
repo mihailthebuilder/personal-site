@@ -1,9 +1,11 @@
 import fire from "../../resources/fire.js";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import "./Projects.scss";
 
 const Projects = ({ typewriterText, startAnimations }) => {
+  const [projectIndex, setProjectIndex] = useState(0);
+
   useEffect(() => {
     fire
       .firestore()
@@ -22,6 +24,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {typewriterText}
         <span className="typewriter-cursor">|</span>
       </div>
+      <div className="project-chooser"></div>
     </section>
   );
 };

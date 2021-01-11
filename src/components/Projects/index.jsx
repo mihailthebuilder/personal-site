@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ReactComponent as LeftArrow } from "./LeftArrow.svg";
 import { ReactComponent as RightArrow } from "./RightArrow.svg";
 
+import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import "./Projects.scss";
 
 const Projects = ({ typewriterText, startAnimations }) => {
@@ -17,6 +18,24 @@ const Projects = ({ typewriterText, startAnimations }) => {
     website_link: "",
     github_link: "",
   });
+
+  const [animationStep, setAnimationStep] = useState(0);
+  useEffect(() => {
+    const animation = async () => {
+      startAnimationFunction(".project-image", setAnimationStep);
+      await sleep(200);
+      startAnimationFunction(".project-info>h2", setAnimationStep);
+      startAnimationFunction(".project-description", setAnimationStep);
+      await sleep(200);
+      startAnimationFunction(".project-links", setAnimationStep);
+      await sleep(200);
+      startAnimationFunction(".arrow-right", setAnimationStep);
+    };
+
+    if (startAnimations) {
+      animation();
+    }
+  }, [startAnimations]);
 
   useEffect(() => {
     fire
@@ -65,7 +84,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div className="arrow-left"></div>
         )}
         <img
-          className="project-image"
+          className={`project-image ${
+            animationStep >= 1 ? "project-show" : "project-hide"
+          }`}
           src={focusProject.image_src}
           alt={focusProject.title}
         />
@@ -75,14 +96,43 @@ const Projects = ({ typewriterText, startAnimations }) => {
             <RightArrow />
           </button>
         ) : (
-          <div className="arrow-right"></div>
+          <div
+            className={`arrow-right ${
+              animationStep >= 3 ? "project-show" : "project-hide"
+            }`}
+          ></div>
         )}
         <div className="project-info">
-          <h2>{focusProject.title}</h2>
-          <p>{focusProject.description}</p>
-          <p>
-            <a href={focusProject.website_link}>Website</a> |{" "}
-            <a href={focusProject.github_link}>GitHub</a>
+          <h2
+            className={`${
+              animationStep >= 2 ? "project-show" : "project-hide"
+            }`}
+          >
+            {focusProject.title}
+          </h2>
+          <p
+            className={`project-description ${
+              animationStep >= 3 ? "project-show" : "project-hide"
+            }`}
+          >
+            {focusProject.description}
+          </p>
+          <p
+            className={`project-links ${
+              animationStep >= 4 ? "project-show" : "project-hide"
+            }`}
+          >
+            <a
+              href={focusProject.website_link}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Website
+            </a>{" "}
+            |{" "}
+            <a href={focusProject.github_link} rel="noreferrer" target="_blank">
+              GitHub
+            </a>
           </p>
         </div>
       </div>

@@ -24,7 +24,7 @@ function App() {
         ChildComponent={Projects}
       />
       <Typewriter
-        selectorTypewriter="#contact"
+        selectorTypewriter="#contact>.section-title"
         typewriterText="contact."
         ChildComponent={Contact}
       />

@@ -94,9 +94,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div className="arrow-left"></div>
         )}
         <img
-          className={`project-image ${
-            animationStep >= 1 ? "project-show" : "project-hide"
-          }`}
+          className={`project-image ${animationStep < 1 && "project-hide"}`}
           src={focusProject.image_src}
           alt={focusProject.title}
         />

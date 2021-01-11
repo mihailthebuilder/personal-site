@@ -6,7 +6,8 @@
   img {
     height: 25rem;
     object-fit: cover;
-    width: 40rem;
+    width: 100%;
+    max-width: 40rem;
   }
 
   h2 {
@@ -19,7 +20,7 @@
   }
 
   ul {
-    margin-top: 3rem;
+    margin-top: 1em;
     padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

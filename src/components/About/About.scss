@@ -24,6 +24,11 @@
     width: 20rem;
     align-self: center;
     border-radius: 5px;
+    transition: 0.2s;
+  }
+
+  > div {
+    transition: 0.2s;
   }
 }
 
@@ -36,6 +41,11 @@
     padding: 0.5rem 1rem;
     width: fit-content;
     letter-spacing: 3px;
+    transition: 0.2s;
+  }
+
+  > div {
+    transition: 0.2s;
   }
 
   h3 {
@@ -53,12 +63,6 @@
 .about-hide {
   opacity: 0;
   transform: translateY(1rem);
-}
-
-.about-show {
-  opacity: 1;
-  transition: 0.2s;
-  transform: translateY(0);
 }
 
 @media (max-width: 1400px) {

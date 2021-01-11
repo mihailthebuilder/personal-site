@@ -1,0 +1,13 @@
+@import "../../resources/variables.scss";
+
+footer {
+  background-color: $light-black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  cursor: default;
+  font-size: 1.5rem;
+  font-family: Prompt-Regular, sans-serif;
+}

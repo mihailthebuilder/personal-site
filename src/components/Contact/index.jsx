@@ -14,9 +14,9 @@ const Contact = ({ typewriterText, startAnimations }) => {
       await sleep(400);
       startAnimationFunction("#contact>h2", setAnimationStep);
       await sleep(400);
-      startAnimationFunction(".email-link", setAnimationStep);
-      startAnimationFunction(".linkedin-link", setAnimationStep);
-      startAnimationFunction(".github-link", setAnimationStep);
+      startAnimationFunction("#contact li:nth-of-type(1)>a", setAnimationStep);
+      startAnimationFunction("#contact li:nth-of-type(2)>a", setAnimationStep);
+      startAnimationFunction("#contact li:nth-of-type(3)>a", setAnimationStep);
     };
 
     if (startAnimations) {
@@ -28,19 +28,17 @@ const Contact = ({ typewriterText, startAnimations }) => {
     <section id="contact" className="section-styling">
       <SectionTitle text={typewriterText} />
       <img
-        className={animationStep >= 1 ? "contact-show" : "contact-hide"}
+        className={animationStep >= 1 ? "" : "contact-hide"}
         src={Cat}
         alt="Cat typing"
       />
-      <h2 className={animationStep >= 2 ? "contact-show" : "contact-hide"}>
+      <h2 className={animationStep >= 2 ? "" : "contact-hide"}>
         Want to chat? Feel welcome to send me a message via:
       </h2>
       <ul>
         <li>
           <a
-            className={`email-link ${
-              animationStep >= 3 ? "contact-show" : "contact-hide"
-            }`}
+            className={animationStep >= 3 ? "" : "contact-hide"}
             href="mailto:mihail.marian@woondering.com"
           >
             EMAIL
@@ -48,9 +46,7 @@ const Contact = ({ typewriterText, startAnimations }) => {
         </li>
         <li>
           <a
-            className={`linkedin-link ${
-              animationStep >= 4 ? "contact-show" : "contact-hide"
-            }`}
+            className={animationStep >= 4 ? "" : "contact-hide"}
             href="https://www.linkedin.com/in/mihailmarian"
             rel="noreferrer"
             target="_blank"
@@ -60,9 +56,7 @@ const Contact = ({ typewriterText, startAnimations }) => {
         </li>
         <li>
           <a
-            className={`github-link ${
-              animationStep >= 5 ? "contact-show" : "contact-hide"
-            }`}
+            className={animationStep >= 5 ? "" : "contact-hide"}
             href="https://github.com/mihailthebuilder"
             rel="noreferrer"
             target="_blank"

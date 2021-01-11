@@ -7,7 +7,7 @@ const Contact = ({ typewriterText, startAnimations }) => {
     <section id="contact" className="section-styling">
       <SectionTitle text={typewriterText} />
       <img src={Cat} alt="Cat typing" />
-      <h2>Want to have a chat? Feel welcome to send me a message via:</h2>
+      <h2>Want to chat? Feel welcome to send me a message via:</h2>
       <ul>
         <li>
           <a href="mailto:mihail.marian@woondering.com">EMAIL</a>

@@ -53,3 +53,32 @@
     }
   }
 }
+
+@media (max-width: $mobile-screen) {
+  #contact {
+    padding-left: 0;
+    padding-right: 0;
+
+    img {
+      height: 17rem;
+    }
+
+    h2 {
+      padding: 0 1.5rem;
+    }
+
+    ul {
+      grid-template-columns: 1fr;
+      height: auto;
+      margin: 0;
+
+      li {
+        height: 4rem;
+        justify-content: center;
+        a {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}

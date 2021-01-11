@@ -8,17 +8,17 @@ const Landing = ({ typewriterText, startAnimations }) => {
   const [slideContact, setSlideContact] = useState("slide-out");
 
   useEffect(() => {
-    const animation = async (startAnimations) => {
-      if (startAnimations) {
-        setSlideAbout("slide-in");
-        await sleep(200);
-        setSlideProjects("slide-in");
-        await sleep(200);
-        setSlideContact("slide-in");
-      }
+    const animation = async () => {
+      setSlideAbout("slide-in");
+      await sleep(200);
+      setSlideProjects("slide-in");
+      await sleep(200);
+      setSlideContact("slide-in");
     };
 
-    animation(startAnimations);
+    if (startAnimations) {
+      animation();
+    }
   }, [startAnimations]);
 
   return (

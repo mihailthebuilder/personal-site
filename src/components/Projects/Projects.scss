@@ -118,7 +118,10 @@
   &.arrow-right {
     transform: translateX(1rem);
   }
-  & h2,
+  &.arrow-left {
+    transform: translateX(-1rem);
+  }
+  &h2,
   &.project-description,
   &.project-links {
     transform: translateY(1rem);
@@ -129,12 +132,13 @@
   opacity: 100%;
   transition: 0.2s;
   &.project-image,
-  & h2,
+  &h2,
   &.project-description,
   &.project-links {
     transform: translateY(0);
   }
-  &.arrow-right {
+  &.arrow-right,
+  &.arrow-left {
     transform: translateX(0);
   }
 }

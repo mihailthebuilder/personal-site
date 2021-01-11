@@ -61,12 +61,18 @@ const Projects = ({ typewriterText, startAnimations }) => {
     }
   }, [projectIndex, projectList]);
 
-  const getOlderProject = () => {
+  const getOlderProject = async () => {
+    setAnimationStep(0);
     setProjectIndex((previousValue) => previousValue + 1);
+    await sleep(400);
+    setAnimationStep(5);
   };
 
-  const getNewerProject = () => {
+  const getNewerProject = async () => {
+    setAnimationStep(0);
     setProjectIndex((previousValue) => previousValue - 1);
+    await sleep(400);
+    setAnimationStep(5);
   };
 
   return (
@@ -77,7 +83,12 @@ const Projects = ({ typewriterText, startAnimations }) => {
       </div>
       <div className="project-chooser">
         {projectIndex >= 1 ? (
-          <button className="arrow-left" onClick={getNewerProject}>
+          <button
+            className={`arrow-left ${
+              animationStep >= 5 ? "project-show" : "project-hide"
+            }`}
+            onClick={getNewerProject}
+          >
             <LeftArrow />
           </button>
         ) : (

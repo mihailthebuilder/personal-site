@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { ReactComponent as LeftArrow } from "./LeftArrow.svg";
 import { ReactComponent as RightArrow } from "./RightArrow.svg";
 
+import SectionTitle from "../SectionTitle";
+
 import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import "./Projects.scss";
 
@@ -77,10 +79,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
 
   return (
     <section id="projects" className="section-styling">
-      <div className="section-title">
-        {typewriterText}
-        <span className="typewriter-cursor">|</span>
-      </div>
+      <SectionTitle text={typewriterText} />
       <div className="project-chooser">
         {projectIndex >= 1 ? (
           <button

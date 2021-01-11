@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import "./About.scss";
 import ProfileImage from "./ProfileImage.png";
+import SectionTitle from "../SectionTitle";
 
 const About = ({ typewriterText, startAnimations }) => {
   const [animationStep, setAnimationStep] = useState(0);
@@ -22,10 +23,8 @@ const About = ({ typewriterText, startAnimations }) => {
 
   return (
     <section id="about" className="section-styling">
-      <div className="section-title">
-        {typewriterText}
-        <span className="typewriter-cursor">|</span>
-      </div>
+      <SectionTitle text={typewriterText} />
+
       <div className="about-content">
         <div className="about-description">
           <img

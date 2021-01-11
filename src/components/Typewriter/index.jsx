@@ -1,6 +1,5 @@
 import { sleep, startAnimationFunction } from "../../resources/functions.js";
 import { useState, useEffect } from "react";
-import "./Typewriter.scss";
 
 const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
   const [{ content, carriage }, setContent] = useState({

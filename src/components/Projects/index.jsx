@@ -28,7 +28,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
       startAnimationFunction(".project-description", setAnimationStep);
       await sleep(200);
       startAnimationFunction(".project-links", setAnimationStep);
-      await sleep(200);
+      await sleep(400);
       startAnimationFunction(".arrow-right", setAnimationStep);
     };
 
@@ -92,15 +92,16 @@ const Projects = ({ typewriterText, startAnimations }) => {
         />
 
         {projectIndex <= projectList.length - 2 ? (
-          <button className="arrow-right" onClick={getOlderProject}>
+          <button
+            className={`arrow-right ${
+              animationStep >= 5 ? "project-show" : "project-hide"
+            }`}
+            onClick={getOlderProject}
+          >
             <RightArrow />
           </button>
         ) : (
-          <div
-            className={`arrow-right ${
-              animationStep >= 3 ? "project-show" : "project-hide"
-            }`}
-          ></div>
+          <div className="arrow-right"></div>
         )}
         <div className="project-info">
           <h2

@@ -1,19 +1,17 @@
 import "./Landing.scss";
 import { useState, useEffect } from "react";
-import { sleep } from "../../resources/functions.js";
+import { sleep, startAnimationFunction } from "../../resources/functions.js";
 
 const Landing = ({ typewriterText, startAnimations }) => {
-  const [slideAbout, setSlideAbout] = useState("slide-out");
-  const [slideProjects, setSlideProjects] = useState("slide-out");
-  const [slideContact, setSlideContact] = useState("slide-out");
+  const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
     const animation = async () => {
-      setSlideAbout("slide-in");
+      startAnimationFunction("#landing li:nth-of-type(1)", setAnimationStep);
       await sleep(200);
-      setSlideProjects("slide-in");
+      startAnimationFunction("#landing li:nth-of-type(2)", setAnimationStep);
       await sleep(200);
-      setSlideContact("slide-in");
+      startAnimationFunction("#landing li:nth-of-type(3)", setAnimationStep);
     };
 
     if (startAnimations) {
@@ -32,13 +30,13 @@ const Landing = ({ typewriterText, startAnimations }) => {
       </div>
       <nav>
         <ul>
-          <li className={slideAbout}>
+          <li className={animationStep < 1 ? "slide-out" : ""}>
             <a href="#about">ABOUT</a>
           </li>
-          <li className={slideProjects}>
+          <li className={animationStep < 2 ? "slide-out" : ""}>
             <a href="#projects">PROJECTS</a>
           </li>
-          <li className={slideContact}>
+          <li className={animationStep < 3 ? "slide-out" : ""}>
             <a href="#contact">CONTACT</a>
           </li>
         </ul>

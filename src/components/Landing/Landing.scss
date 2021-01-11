@@ -20,6 +20,7 @@
         font-weight: 700;
         letter-spacing: 7px;
         line-height: 2;
+        transition: 0.3s;
         a {
           color: $white-custom;
           text-decoration: none;
@@ -50,11 +51,6 @@
 
 .slide-out {
   transform: translateX(100vw);
-}
-
-.slide-in {
-  transform: translateX(0vw);
-  transition: 0.3s;
 }
 
 @media (max-width: $tablet-screen) {

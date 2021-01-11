@@ -58,11 +58,11 @@ const Projects = ({ typewriterText, startAnimations }) => {
       </div>
       <div className="project-chooser">
         {projectIndex >= 1 ? (
-          <button onClick={getNewerProject}>
+          <button className="arrow-left" onClick={getNewerProject}>
             <LeftArrow />
           </button>
         ) : (
-          <div></div>
+          <div className="arrow-left"></div>
         )}
         <img
           className="project-image"
@@ -71,13 +71,12 @@ const Projects = ({ typewriterText, startAnimations }) => {
         />
 
         {projectIndex <= projectList.length - 2 ? (
-          <button onClick={getOlderProject}>
+          <button className="arrow-right" onClick={getOlderProject}>
             <RightArrow />
           </button>
         ) : (
-          <div></div>
+          <div className="arrow-right"></div>
         )}
-        <div></div>
         <div className="project-info">
           <h2>{focusProject.title}</h2>
           <p>{focusProject.description}</p>
@@ -86,7 +85,6 @@ const Projects = ({ typewriterText, startAnimations }) => {
             <a href={focusProject.github_link}>GitHub</a>
           </p>
         </div>
-        <div></div>
       </div>
     </section>
   );

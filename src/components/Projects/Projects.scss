@@ -2,6 +2,8 @@
 
 #projects {
   background: $eerie-black;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
 .project-chooser {
@@ -41,5 +43,79 @@
 
   a {
     color: $carolina-blue;
+  }
+
+  a:hover {
+    color: $english-lavender;
+  }
+}
+
+.project-info {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+@media (max-width: 1200px) {
+  .project-chooser {
+    grid-template-columns: 4rem 35rem 4rem;
+    grid-template-rows: 21rem auto;
+    column-gap: 1rem;
+
+    button svg {
+      width: 3rem;
+    }
+  }
+}
+
+@media (max-width: $tablet-screen) {
+  .project-chooser {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 0;
+  }
+
+  .project-image {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    width: 35rem;
+    height: 21rem;
+    justify-self: center;
+  }
+
+  .arrow-right,
+  .arrow-left {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .arrow-left {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    justify-content: flex-end;
+  }
+
+  .arrow-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    justify-content: flex-start;
+  }
+
+  .project-info {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+  }
+}
+
+@media (max-width: $mobile-screen) {
+  .arrow-left {
+    justify-content: flex-start;
+  }
+
+  .arrow-right {
+    justify-content: flex-end;
   }
 }

@@ -83,9 +83,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
       <div className="project-chooser">
         {projectIndex >= 1 ? (
           <button
-            className={`arrow-left ${
-              animationStep >= 5 ? "project-show" : "project-hide"
-            }`}
+            className={`arrow-left ${animationStep >= 5 ? "" : "project-hide"}`}
             onClick={getNewerProject}
           >
             <LeftArrow />
@@ -94,7 +92,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div className="arrow-left"></div>
         )}
         <img
-          className={`project-image ${animationStep < 1 && "project-hide"}`}
+          className={`project-image ${
+            animationStep >= 1 ? "" : "project-hide"
+          }`}
           src={focusProject.image_src}
           alt={focusProject.title}
         />
@@ -102,7 +102,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex <= projectList.length - 2 ? (
           <button
             className={`arrow-right ${
-              animationStep >= 5 ? "project-show" : "project-hide"
+              animationStep >= 5 ? "" : "project-hide"
             }`}
             onClick={getOlderProject}
           >
@@ -112,23 +112,19 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div className="arrow-right"></div>
         )}
         <div className="project-info">
-          <h2
-            className={`${
-              animationStep >= 2 ? "project-show" : "project-hide"
-            }`}
-          >
+          <h2 className={`${animationStep >= 2 ? "" : "project-hide"}`}>
             {focusProject.title}
           </h2>
           <p
             className={`project-description ${
-              animationStep >= 3 ? "project-show" : "project-hide"
+              animationStep >= 3 ? "" : "project-hide"
             }`}
           >
             {focusProject.description}
           </p>
           <p
             className={`project-links ${
-              animationStep >= 4 ? "project-show" : "project-hide"
+              animationStep >= 4 ? "" : "project-hide"
             }`}
           >
             <a

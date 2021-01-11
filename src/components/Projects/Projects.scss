@@ -13,6 +13,10 @@
   column-gap: 3rem;
   margin-top: 1rem;
 
+  * {
+    transition: 0.2s;
+  }
+
   button {
     background: none;
     outline: none;
@@ -125,21 +129,6 @@
   &.project-description,
   &.project-links {
     transform: translateY(1rem);
-  }
-}
-
-.project-show {
-  opacity: 100%;
-  transition: 0.2s;
-  &.project-image,
-  &h2,
-  &.project-description,
-  &.project-links {
-    transform: translateY(0);
-  }
-  &.arrow-right,
-  &.arrow-left {
-    transform: translateX(0);
   }
 }
 

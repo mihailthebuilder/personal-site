@@ -22,6 +22,12 @@
       fill: $bright-green;
     }
   }
+
+  button:hover {
+    svg {
+      fill: $english-lavender;
+    }
+  }
 }
 
 .project-image {

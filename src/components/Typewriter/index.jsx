@@ -22,7 +22,7 @@ const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
       if (carriage === typewriterText.length) {
         setTimeout(() => {
           setStartNextAnimation(true);
-        }, 300);
+        }, 200);
 
         return;
       }

@@ -129,18 +129,7 @@
 }
 
 .project-show {
-  opacity: 100%;
   transition: 0.2s;
-  &.project-image,
-  &h2,
-  &.project-description,
-  &.project-links {
-    transform: translateY(0);
-  }
-  &.arrow-right,
-  &.arrow-left {
-    transform: translateX(0);
-  }
 }
 
 @media (max-width: $mobile-screen) {

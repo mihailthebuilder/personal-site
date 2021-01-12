@@ -67,7 +67,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
     setAnimationStep(0);
     await sleep(200);
     setProjectIndex((previousValue) => previousValue + 1);
-    await sleep(400);
+    await sleep(500);
     setAnimationStep(5);
   };
 
@@ -75,7 +75,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
     setAnimationStep(0);
     await sleep(200);
     setProjectIndex((previousValue) => previousValue - 1);
-    await sleep(400);
+    await sleep(500);
     setAnimationStep(5);
   };
 

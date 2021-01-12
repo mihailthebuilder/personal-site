@@ -68,7 +68,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
     await sleep(200);
     setProjectIndex((previousValue) => previousValue + 1);
     await sleep(500);
-    setAnimationStep(5);
+    setAnimationStep(4);
   };
 
   const getNewerProject = async () => {
@@ -76,7 +76,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
     await sleep(200);
     setProjectIndex((previousValue) => previousValue - 1);
     await sleep(500);
-    setAnimationStep(5);
+    setAnimationStep(4);
   };
 
   return (
@@ -86,7 +86,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex >= 1 ? (
           <button
             className={`arrow-left ${
-              animationStep >= 5 ? "project-show" : "project-hide"
+              animationStep >= 4 ? "project-show" : "project-hide"
             }`}
             onClick={getNewerProject}
           >
@@ -96,7 +96,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
           <div className="arrow-left"></div>
         )}
         <img
-          className={`project-image ${animationStep < 1 && "project-hide"}`}
+          className={`project-image ${
+            animationStep >= 1 ? "project-show" : "project-hide"
+          }`}
           src={focusProject.image_src}
           alt={focusProject.title}
         />
@@ -104,7 +106,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex <= projectList.length - 2 ? (
           <button
             className={`arrow-right ${
-              animationStep >= 5 ? "project-show" : "project-hide"
+              animationStep >= 4 ? "project-show" : "project-hide"
             }`}
             onClick={getOlderProject}
           >

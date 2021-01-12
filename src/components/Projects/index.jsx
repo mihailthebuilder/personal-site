@@ -58,10 +58,17 @@ const Projects = ({ typewriterText, startAnimations }) => {
   useEffect(() => {
     if (projectList.length > 0) {
       const project = projectList[projectIndex];
-      const imageSrc = fire.storage().ref(`img/${project.id}.png`);
-      setFocusProject({ image_src: imageSrc, ...project });
+
+      fire
+        .storage()
+        .ref()
+        .child(`img/${project.id}.png`)
+        .getDownloadURL()
+        .then((url) => {
+          setFocusProject({ image_src: url, ...project });
+        });
     }
-  }, [projectIndex, projectList]);
+  }, [projectIndex, projectList, animationStep]);
 
   const getOlderProject = async () => {
     setAnimationStep(0);

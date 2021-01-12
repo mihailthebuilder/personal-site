@@ -30,7 +30,6 @@ const Projects = ({ typewriterText, startAnimations }) => {
       startAnimationFunction(".project-description", setAnimationStep);
       await sleep(200);
       startAnimationFunction(".project-links", setAnimationStep);
-      await sleep(400);
       startAnimationFunction(".arrow-right", setAnimationStep);
     };
 

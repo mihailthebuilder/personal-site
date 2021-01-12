@@ -68,7 +68,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
           setFocusProject({ image_src: url, ...project });
         });
     }
-  }, [projectIndex, projectList, animationStep]);
+  }, [projectIndex, projectList]);
 
   const getOlderProject = async () => {
     setAnimationStep(0);

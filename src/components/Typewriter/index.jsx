@@ -28,7 +28,7 @@ const Typewriter = ({ selectorTypewriter, typewriterText, ChildComponent }) => {
       }
       const delay = setTimeout(async () => {
         if (content === "") {
-          await sleep(2000);
+          await sleep(1200);
         }
         setContent({
           content: content + typewriterText[carriage],

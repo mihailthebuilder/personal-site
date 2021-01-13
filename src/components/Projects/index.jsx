@@ -29,7 +29,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
 
   const [animationStep, setAnimationStep] = useState(0);
   useEffect(() => {
-    if (startAnimations & (projectList.length > 0)) {
+    if (startAnimations && projectList.length > 0) {
       const animation = async () => {
         startAnimationFunction(".project-image", setAnimationStep);
         await sleep(200);
@@ -68,20 +68,37 @@ const Projects = ({ typewriterText, startAnimations }) => {
     }
   }, [projectIndex, projectList]);
 
+  const [newProjectLoad, setNewProjectLoad] = useState(false);
+  useEffect(() => {
+    const projectLoaded = async () => {
+      await sleep(400);
+      setNewProjectLoad(false);
+    };
+    projectLoaded();
+  }, [focusProject]);
+
   const getOlderProject = async () => {
-    setAnimationStep(0);
+    setNewProjectLoad(true);
     await sleep(200);
-    setProjectIndex((previousValue) => previousValue + 1);
-    await sleep(500);
-    setAnimationStep(4);
+    setProjectIndex((previousValue) => {
+      if (previousValue < projectList.length - 1) {
+        return previousValue + 1;
+      } else {
+        return previousValue;
+      }
+    });
   };
 
   const getNewerProject = async () => {
-    setAnimationStep(0);
+    setNewProjectLoad(true);
     await sleep(200);
-    setProjectIndex((previousValue) => previousValue - 1);
-    await sleep(500);
-    setAnimationStep(4);
+    setProjectIndex((previousValue) => {
+      if (previousValue > 0) {
+        return previousValue - 1;
+      } else {
+        return previousValue;
+      }
+    });
   };
 
   return (
@@ -91,7 +108,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex >= 1 ? (
           <button
             className={`arrow-left ${
-              animationStep >= 4 ? "project-show" : "project-hide"
+              animationStep >= 4 && !newProjectLoad
+                ? "project-show"
+                : "project-hide"
             }`}
             onClick={getNewerProject}
           >
@@ -102,7 +121,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
         )}
         <img
           className={`project-image ${
-            animationStep >= 1 ? "project-show" : "project-hide"
+            animationStep >= 1 && !newProjectLoad
+              ? "project-show"
+              : "project-hide"
           }`}
           src={focusProject.image_src}
           alt={focusProject.title}
@@ -111,7 +132,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex <= projectList.length - 2 ? (
           <button
             className={`arrow-right ${
-              animationStep >= 4 ? "project-show" : "project-hide"
+              animationStep >= 4 && !newProjectLoad
+                ? "project-show"
+                : "project-hide"
             }`}
             onClick={getOlderProject}
           >
@@ -123,21 +146,27 @@ const Projects = ({ typewriterText, startAnimations }) => {
         <div className="project-info">
           <h2
             className={`${
-              animationStep >= 2 ? "project-show" : "project-hide"
+              animationStep >= 2 && !newProjectLoad
+                ? "project-show"
+                : "project-hide"
             }`}
           >
             {focusProject.title}
           </h2>
           <p
             className={`project-description ${
-              animationStep >= 3 ? "project-show" : "project-hide"
+              animationStep >= 3 && !newProjectLoad
+                ? "project-show"
+                : "project-hide"
             }`}
           >
             {focusProject.description}
           </p>
           <p
             className={`project-links ${
-              animationStep >= 4 ? "project-show" : "project-hide"
+              animationStep >= 4 && !newProjectLoad
+                ? "project-show"
+                : "project-hide"
             }`}
           >
             <a

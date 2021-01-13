@@ -24,6 +24,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
           newProjectList = newProjectList.concat(project);
         });
         setProjectList(newProjectList);
+      })
+      .catch((error) => {
+        console.log("Error getting project data", error);
       });
   }, []);
 
@@ -64,6 +67,9 @@ const Projects = ({ typewriterText, startAnimations }) => {
         .getDownloadURL()
         .then((url) => {
           setFocusProject({ image_src: url, ...project });
+        })
+        .catch((error) => {
+          console.log("Error getting image: ", error);
         });
     }
   }, [projectIndex, projectList]);

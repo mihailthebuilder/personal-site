@@ -23,20 +23,20 @@ const Projects = ({ typewriterText, startAnimations }) => {
 
   const [animationStep, setAnimationStep] = useState(0);
   useEffect(() => {
-    const animation = async () => {
-      startAnimationFunction(".project-image", setAnimationStep);
-      await sleep(200);
-      startAnimationFunction(".project-info>h2", setAnimationStep);
-      startAnimationFunction(".project-description", setAnimationStep);
-      await sleep(200);
-      startAnimationFunction(".project-links", setAnimationStep);
-      startAnimationFunction(".arrow-right", setAnimationStep);
-    };
+    if (startAnimations & (projectList.length > 0)) {
+      const animation = async () => {
+        startAnimationFunction(".project-image", setAnimationStep);
+        await sleep(200);
+        startAnimationFunction(".project-info>h2", setAnimationStep);
+        startAnimationFunction(".project-description", setAnimationStep);
+        await sleep(200);
+        startAnimationFunction(".project-links", setAnimationStep);
+        startAnimationFunction(".arrow-right", setAnimationStep);
+      };
 
-    if (startAnimations) {
       animation();
     }
-  }, [startAnimations]);
+  }, [startAnimations, projectList]);
 
   useEffect(() => {
     fire
@@ -56,37 +56,33 @@ const Projects = ({ typewriterText, startAnimations }) => {
 
   useEffect(() => {
     if (projectList.length > 0) {
-      const loadImage = async () => {
-        const project = projectList[projectIndex];
+      const project = projectList[projectIndex];
 
-        fire
-          .storage()
-          .ref()
-          .child(`img/${project.id}.png`)
-          .getDownloadURL()
-          .then((url) => {
-            setFocusProject({ image_src: url, ...project });
-          });
-      };
-
-      loadImage();
+      fire
+        .storage()
+        .ref()
+        .child(`img/${project.id}.png`)
+        .getDownloadURL()
+        .then((url) => {
+          setFocusProject({ image_src: url, ...project });
+        });
     }
   }, [projectIndex, projectList]);
 
   const getOlderProject = async () => {
-    //setAnimationStep(0);
-    //await sleep(200);
+    setAnimationStep(0);
+    await sleep(200);
     setProjectIndex((previousValue) => previousValue + 1);
-    //await sleep(500);
-    //setAnimationStep(4);
+    await sleep(500);
+    setAnimationStep(4);
   };
 
   const getNewerProject = async () => {
-    //setAnimationStep(0);
-    //await sleep(200);
+    setAnimationStep(0);
+    await sleep(200);
     setProjectIndex((previousValue) => previousValue - 1);
-    //await sleep(500);
-    //setAnimationStep(4);
+    await sleep(500);
+    setAnimationStep(4);
   };
 
   return (

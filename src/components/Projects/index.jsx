@@ -56,33 +56,37 @@ const Projects = ({ typewriterText, startAnimations }) => {
 
   useEffect(() => {
     if (projectList.length > 0) {
-      const project = projectList[projectIndex];
+      const loadImage = async () => {
+        const project = projectList[projectIndex];
 
-      fire
-        .storage()
-        .ref()
-        .child(`img/${project.id}.png`)
-        .getDownloadURL()
-        .then((url) => {
-          setFocusProject({ image_src: url, ...project });
-        });
+        fire
+          .storage()
+          .ref()
+          .child(`img/${project.id}.png`)
+          .getDownloadURL()
+          .then((url) => {
+            setFocusProject({ image_src: url, ...project });
+          });
+      };
+
+      loadImage();
     }
   }, [projectIndex, projectList]);
 
   const getOlderProject = async () => {
-    setAnimationStep(0);
-    await sleep(200);
+    //setAnimationStep(0);
+    //await sleep(200);
     setProjectIndex((previousValue) => previousValue + 1);
-    await sleep(500);
-    setAnimationStep(4);
+    //await sleep(500);
+    //setAnimationStep(4);
   };
 
   const getNewerProject = async () => {
-    setAnimationStep(0);
-    await sleep(200);
+    //setAnimationStep(0);
+    //await sleep(200);
     setProjectIndex((previousValue) => previousValue - 1);
-    await sleep(500);
-    setAnimationStep(4);
+    //await sleep(500);
+    //setAnimationStep(4);
   };
 
   return (

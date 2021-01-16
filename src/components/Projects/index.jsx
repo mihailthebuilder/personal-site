@@ -36,11 +36,11 @@ const Projects = ({ typewriterText, startAnimations }) => {
       const animation = async () => {
         startAnimationFunction(".project-image", setAnimationStep);
         await sleep(200);
+        startAnimationFunction(".arrow-right", setAnimationStep);
         startAnimationFunction(".project-info>h2", setAnimationStep);
         startAnimationFunction(".project-description", setAnimationStep);
         await sleep(200);
         startAnimationFunction(".project-links", setAnimationStep);
-        startAnimationFunction(".arrow-right", setAnimationStep);
       };
 
       animation();
@@ -114,7 +114,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex >= 1 ? (
           <button
             className={`arrow-left ${
-              animationStep >= 4 && !newProjectLoad
+              animationStep >= 2 && !newProjectLoad
                 ? "project-show"
                 : "project-hide"
             }`}
@@ -138,7 +138,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         {projectIndex <= projectList.length - 2 ? (
           <button
             className={`arrow-right ${
-              animationStep >= 4 && !newProjectLoad
+              animationStep >= 2 && !newProjectLoad
                 ? "project-show"
                 : "project-hide"
             }`}
@@ -152,7 +152,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
         <div className="project-info">
           <h2
             className={`${
-              animationStep >= 2 && !newProjectLoad
+              animationStep >= 3 && !newProjectLoad
                 ? "project-show"
                 : "project-hide"
             }`}
@@ -161,7 +161,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
           </h2>
           <p
             className={`project-description ${
-              animationStep >= 3 && !newProjectLoad
+              animationStep >= 4 && !newProjectLoad
                 ? "project-show"
                 : "project-hide"
             }`}
@@ -170,7 +170,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
           </p>
           <p
             className={`project-links ${
-              animationStep >= 4 && !newProjectLoad
+              animationStep >= 5 && !newProjectLoad
                 ? "project-show"
                 : "project-hide"
             }`}

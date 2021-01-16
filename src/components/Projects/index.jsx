@@ -75,13 +75,10 @@ const Projects = ({ typewriterText, startAnimations }) => {
   }, [projectIndex, projectList]);
 
   const [newProjectLoad, setNewProjectLoad] = useState(false);
-  useEffect(() => {
-    const projectLoaded = async () => {
-      await sleep(400);
-      setNewProjectLoad(false);
-    };
-    projectLoaded();
-  }, [focusProject]);
+  const imageLoaded = () => {
+    console.log("imageLoaded triggered");
+    setNewProjectLoad(false);
+  };
 
   const getOlderProject = async () => {
     setNewProjectLoad(true);
@@ -133,6 +130,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
           }`}
           src={focusProject.image_src}
           alt={focusProject.title}
+          onLoad={imageLoaded}
         />
 
         {projectIndex <= projectList.length - 2 ? (

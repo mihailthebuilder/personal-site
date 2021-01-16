@@ -76,7 +76,6 @@ const Projects = ({ typewriterText, startAnimations }) => {
 
   const [newProjectLoad, setNewProjectLoad] = useState(false);
   const imageLoaded = () => {
-    console.log("imageLoaded triggered");
     setNewProjectLoad(false);
   };
 

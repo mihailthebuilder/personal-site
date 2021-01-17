@@ -22,7 +22,7 @@ My portfolio site. Made with a [React](https://reactjs.org/) front-end and [Fire
     - [Projects](#projects)
 - [Responsive Design](#responsive-design)
 
-# [Firebase](https://www.firebase.com/) Setup
+# Firebase Setup
 
 I wanted to set up a back-end service that would act as the CMS for my projects. I picked Firebase because it's simple, robust, secure and it offers a free plan (very important for now :D). I am leveraging the following products from their suite:
 
@@ -257,9 +257,73 @@ const startAnimationFunction = (elementSelector, setAnimationStep) => {
 
 ### [Typewriter](./src/components/Typewriter/index.jsx)
 
+The Typewriter component generates the letters in the section titles one by one to achieve the typewriter effect:
+
+![typewriter](demo/typewriter.gif)
+
+Since it's applicable across all sections, I decided to have it wrap over the components that render the website sections. An example from [App.js](./src/App.js):
+
+```jsx
+<Typewriter
+  selectorTypewriter=".landing-title-role"
+  typewriterText="FRONT-END DEVELOPER."
+  ChildComponent={Landing}
+/>
+```
+
+`selectorTypewriter` contains the selector that should be used for triggering the typerwriter animation ([see here](#animation-sequence)).
+
+These are the parts that generate the typewriter effect:
+
+```js
+//content = the text that's rendered
+//carriage = points to which character in the final text we're at
+const [{ content, carriage }, setContent] = useState({
+  content: "",
+  carriage: 0,
+});
+
+const [startNextAnimation, setStartNextAnimation] = useState(false);
+
+useEffect(() => {
+  //will always be true when visibility conditions are met
+  if (animationStep === 1) {
+    // if the whole text has been rendered, move to the next animation
+    if (carriage === typewriterText.length) {
+      setTimeout(() => {
+        setStartNextAnimation(true);
+      }, 200);
+
+      return;
+    }
+    const delay = setTimeout(async () => {
+      //if at the start of the animation, wait 1.2s
+      if (content === "") {
+        await sleep(1200);
+      }
+
+      //render the text, one character by one
+      setContent({
+        content: content + typewriterText[carriage],
+        carriage: carriage + 1,
+      });
+      clearTimeout(delay);
+
+      //pause for 70ms after adding one character to achieve the typewriter effect
+    }, 70);
+  }
+}, [content, carriage, typewriterText, animationStep]);
+```
+
+The `startNextAnimation` state is passed to the child components to let them know when they should start their own animation sequence - see `startAnimations` in the [Landing component](#animation-sequence) for an example.
+
 ### Projects
 
 # Responsive Design
+
+Website looks stunning whether on desktop view...
+
+...or on a mobile and everything in-between
 
 ```
 

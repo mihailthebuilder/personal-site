@@ -255,6 +255,8 @@ const startAnimationFunction = (elementSelector, setAnimationStep) => {
 
 ## Special cases
 
+There are a couple of components with animations that have additional rules in place.
+
 ### [Typewriter](./src/components/Typewriter/index.jsx)
 
 The Typewriter component generates the letters in the section titles one by one to achieve the typewriter effect:
@@ -309,7 +311,7 @@ useEffect(() => {
       });
       clearTimeout(delay);
 
-      //pause for 70ms after adding one character to achieve the typewriter effect
+      //pause for 70ms after adding each character to achieve the typewriter effect
     }, 70);
   }
 }, [content, carriage, typewriterText, animationStep]);
@@ -317,14 +319,84 @@ useEffect(() => {
 
 The `startNextAnimation` state is passed to the child components to let them know when they should start their own animation sequence - see `startAnimations` in the [Landing component](#animation-sequence) for an example.
 
-### Projects
+### [Projects](./src/components/Projects/index.jsx)
+
+I mention [here](#cloud-storage) how an image is requested from Firebase's Cloud Storage API every time a new project is selected. The rest of the project information (e.g. title) will be retrieved faster than the image because the former is already in the `projectList` state. To avoid showing this timing mismatch, I hide all of the project content until the image is loaded. Relevant code samples from `Projects`:
+
+```jsx
+const Projects = ({ typewriterText, startAnimations }) => {
+  //if true -> hide the project content
+  const [newProjectLoad, setNewProjectLoad] = useState(false);
+  //...
+
+  //once image loaded -> show the project content
+  const imageLoaded = () => {
+    setNewProjectLoad(false);
+  };
+
+  //move to older project
+  const getOlderProject = async () => {
+    //hide project content
+    setNewProjectLoad(true);
+
+    //delay to wait for animation into invisible to complete
+    await sleep(200);
+
+    //move to older project
+    setProjectIndex((previousValue) => {
+      if (previousValue < projectList.length - 1) {
+        return previousValue + 1;
+      } else {
+        //if already at the last project, don't go back any further
+        return previousValue;
+      }
+    });
+  };
+
+  //...
+
+  return (
+    <section id="projects" className="section-styling">
+      {/*...*/}
+
+      <img
+        {/*hide if newProjectLoad === true*/}
+        className={`project-image ${
+          animationStep >= 1 && !newProjectLoad
+            ? "project-show"
+            : "project-hide"
+        }`}
+        {/*trigger when image loaded*/}
+        onLoad={imageLoaded}
+        {/*...*/}
+      />
+
+      <button
+        {/*hide if newProjectLoad === true*/}
+        className={`arrow-right ${
+          animationStep >= 2 && !newProjectLoad
+            ? "project-show"
+            : "project-hide"
+        }`}
+        onClick={getOlderProject}
+      >
+        <RightArrow />
+      </button>
+    </section>
+  );
+};
+```
+
+The result:
+
+![projects](./demo/projects.gif)
 
 # Responsive Design
 
 Website looks stunning whether on desktop view...
 
+![desktop](./demo/desktop.gif)
+
 ...or on a mobile and everything in-between
 
-```
-
-```
+![mobile](./demo/mobile.gif)

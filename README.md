@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# Portfolio Site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My portfolio site. Made with a [React](https://reactjs.org/) front-end and [Firebase](https://www.firebase.com/) back-end.
 
-## Available Scripts
+# Table of Contents
 
-In the project directory, you can run:
+- [Portfolio Site](#portfolio-site)
+- [Table of Contents](#table-of-contents)
+- [Firebase Setup](#firebase-setup)
+  - [Cloud Firestore](#cloud-firestore)
+  - [Cloud Storage](#cloud-storage)
+  - [Google Analytics](#google-analytics)
+- [Animations](#animations)
+  - [`startAnimationFunction()`](#startanimationfunction)
+  - [Typewriter](#typewriter)
+  - [Landing](#landing)
+  - [About](#about)
+  - [Projects](#projects)
+  - [Contact](#contact)
+- [Responsive Design](#responsive-design)
 
-### `npm start`
+# [Firebase](https://www.firebase.com/) Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I wanted to set up a back-end service that would act as the CMS for my projects. I picked Firebase because it's simple, robust, secure and it offers a free plan (very important for now :D). I am leveraging the following products from their suite:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## [Cloud Firestore](https://firebase.google.com/products/firestore)
 
-### `npm test`
+A NoSQL database that enables me to store all the non-image data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![firestore](./demo/firestore.png)
 
-### `npm run build`
+Each project is represented by a document inside the `projects` collection. All the data is loaded right after the [`Project`](src/components/Projects/index.jsx) component is mounted:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+const [projectList, setProjectList] = useState([]);
+useEffect(() => {
+  fire
+    .firestore()
+    //access the "projects" collection in firestore
+    .collection("projects")
+    //sort document objects by publication date in descending order
+    .orderBy("publication_date", "desc")
+    .get()
+    .then((querySnapshot) => {
+      //add the projects one by one to the projectList state
+      let newProjectList = [];
+      querySnapshot.forEach((doc) => {
+        const project = {
+          //include the document ID in projectList
+          id: doc.id,
+          ...doc.data(),
+        };
+        newProjectList = newProjectList.concat(project);
+      });
+      setProjectList(newProjectList);
+    })
+    .catch((error) => {
+      console.log("Error getting project data", error);
+    });
+}, []);
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The API for my database in publicly-accessible, so I've set up read-only access to avoid any tampering with the data.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## [Cloud Storage](https://firebase.google.com/products/storage)
 
-### `npm run eject`
+Used to store content - in my case, it's screenshots of the websites I've built.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![storage](./demo/storage.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I send a request to its API every time a project is displayed in the [`Project`](src/components/Projects/index.jsx) component:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```jsx
+// the data for the project displayed is in the focusProject state
+const [focusProject, setFocusProject] = useState({
+  id: "",
+  image_src: "",
+  description: "",
+  title: "",
+  website_link: "",
+  github_link: "",
+});
+//projectIndex indicates which project in projectList is shown
+const [projectIndex, setProjectIndex] = useState(0);
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+useEffect(() => {
+  if (projectList.length > 0) {
+    const project = projectList[projectIndex];
 
-## Learn More
+    //access Cloud Storage API
+    fire
+      .storage()
+      .ref()
+      //get the URL for the image
+      .child(`img/${project.id}.png`)
+      .getDownloadURL()
+      .then((url) => {
+        //add it to the focus project
+        setFocusProject({ image_src: url, ...project });
+      })
+      .catch((error) => {
+        console.log("Error getting image: ", error);
+      });
+  }
+}, [projectIndex, projectList]);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+//...code
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+return (
+  //...code
+  /* where the Cloud Storage API response data is used */
+  <img
+    src={focusProject.image_src}
+    //..code
+  />
+  //...code
+);
+```
 
-### Code Splitting
+As with [Cloud Firestore](#cloud-firestore), the API can be queried by anyone on the Internet so I set up read-only access.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## [Google Analytics](https://firebase.google.com/products/analytics)
 
-### Analyzing the Bundle Size
+It's incredibly easy to plug Google Analytics with Firebase. All I needed to run is this statement in [fire.js](./src/resources/fire.js):
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+firebase.analytics();
+```
 
-### Making a Progressive Web App
+![analytics](./demo/analytics.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Animations
 
-### Advanced Configuration
+## `startAnimationFunction()`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Typewriter
 
-### Deployment
+## Landing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## About
 
-### `npm run build` fails to minify
+## Projects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+
+# Responsive Design

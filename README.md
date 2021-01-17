@@ -11,12 +11,15 @@ My portfolio site. Made with a [React](https://reactjs.org/) front-end and [Fire
   - [Cloud Storage](#cloud-storage)
   - [Google Analytics](#google-analytics)
 - [Animations](#animations)
-  - [`startAnimationFunction()`](#startanimationfunction)
-  - [Typewriter](#typewriter)
-  - [Landing](#landing)
-  - [About](#about)
-  - [Projects](#projects)
-  - [Contact](#contact)
+  - [Common structure](#common-structure)
+    - [Visibility conditions](#visibility-conditions)
+      - [1. Viewport fully contains the element](#1-viewport-fully-contains-the-element)
+      - [2. Viewport partly contains the element and the element is greater than 1/3 of the viewport](#2-viewport-partly-contains-the-element-and-the-element-is-greater-than-13-of-the-viewport)
+      - [3. Viewport is below the element](#3-viewport-is-below-the-element)
+    - [Animation sequence](#animation-sequence)
+  - [Special cases](#special-cases)
+    - [Typewriter](#typewriter)
+    - [Projects](#projects)
 - [Responsive Design](#responsive-design)
 
 # [Firebase](https://www.firebase.com/) Setup
@@ -131,16 +134,133 @@ firebase.analytics();
 
 # Animations
 
-## `startAnimationFunction()`
+## Common structure
 
-## Typewriter
+I created animations that made elements visible based on a common structure.
 
-## Landing
+### Visibility conditions
 
-## About
+To begin with, an element should only become visible under 3 conditions:
 
-## Projects
+#### 1. Viewport fully contains the element
 
-## Contact
+The default option. The landing page elements during the initial website load are a good example of this:
+
+![landing](./demo/landing.gif)
+
+#### 2. Viewport partly contains the element and the element is greater than 1/3 of the viewport
+
+This condition is most needed when loading images in mobile view.
+
+![image](./demo/image.gif)
+
+Without it, users would have to scroll through a large blank area until the viewport covers the image.
+
+#### 3. Viewport is below the element
+
+![preload](demo/preload.gif)
+
+I felt it would be the optimal user experience since the user would've already scrolled past that section so they wouldn't want to wait for it to load again.
+
+These 3 visibility conditions are assessed in `isScrolledIntoView()` which is in [functions.js](./src/resources/functions.js)
+
+```js
+function isScrolledIntoView(el) {
+  const rect = el.getBoundingClientRect();
+  const elemTop = rect.top;
+  const elemBottom = rect.bottom;
+
+  const isVisible =
+    //condition 3 - viewport below element
+    elemBottom < 0 ||
+    /*condition 2 - viewport partly contains element
+    & element height > 1/3 of viewport height*/
+    (elemBottom - elemTop > window.innerHeight / 3 &&
+      elemTop < window.innerHeight) ||
+    //condition 1 - viewport fully contains element
+    (elemBottom - elemTop < window.innerHeight / 3 &&
+      elemTop >= 0 &&
+      elemBottom <= window.innerHeight);
+
+  return isVisible;
+}
+```
+
+### Animation sequence
+
+Assuming all elements of section fulfil the [visibility conditions](#visibility-conditions) mentioned above, they should show up in a particular sequence. In order to address this, I created an `animationStep` state in each of the React components that generated an animation. Here's an example from the [Landing](./src/components/Landing/index.jsx) component:
+
+```jsx
+const Landing = ({ typewriterText, startAnimations }) => {
+  const [animationStep, setAnimationStep] = useState(0);
+
+  useEffect(() => {
+    const animation = async () => {
+      startAnimationFunction("#landing li:nth-of-type(1)", setAnimationStep);
+      await sleep(200);
+      startAnimationFunction("#landing li:nth-of-type(2)", setAnimationStep);
+      await sleep(200);
+      startAnimationFunction("#landing li:nth-of-type(3)", setAnimationStep);
+    };
+
+    if (startAnimations) {
+      animation();
+    }
+  }, [startAnimations]);
+
+  return (
+    //code...
+
+    // each of the <li> should appear in the set order
+    <ul>
+      <li className={animationStep < 1 ? "slide-out" : ""}>
+        <a href="#about">ABOUT</a>
+      </li>
+      <li className={animationStep < 2 ? "slide-out" : ""}>
+        <a href="#projects">PROJECTS</a>
+      </li>
+      <li className={animationStep < 3 ? "slide-out" : ""}>
+        <a href="#contact">CONTACT</a>
+      </li>
+    </ul>
+    //code...
+  );
+};
+```
+
+Looking at the `li` elements, you'll see that they have a `slide-out` class which hides them when it's not their turn to be shown.
+
+The animation sequence and the visibility triggers are attached to the elements through the `startAnimationFunction` from [functions.js](./src/resources/functions.js):
+
+```js
+const startAnimationFunction = (elementSelector, setAnimationStep) => {
+  const element = document.querySelector(elementSelector);
+  //if visibility condition = true -> trigger next animation step
+  if (isScrolledIntoView(element)) {
+    setAnimationStep((previousValue) => previousValue + 1);
+  } else {
+    //if visiblity condition = true after scroll -> trigger next animation step
+    //with a slight delay and remove this event listener
+    window.addEventListener("scroll", function handler() {
+      if (isScrolledIntoView(element)) {
+        setTimeout(() => {
+          setAnimationStep((previousValue) => previousValue + 1);
+        }, 200);
+        this.removeEventListener("scroll", handler);
+      }
+    });
+  }
+};
+```
+
+## Special cases
+
+### [Typewriter](./src/components/Typewriter/index.jsx)
+
+### Projects
 
 # Responsive Design
+
+```
+
+```

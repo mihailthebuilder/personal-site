@@ -172,17 +172,30 @@ const Projects = ({ typewriterText, startAnimations }) => {
                 : "project-hide"
             }`}
           >
-            <a
-              href={focusProject.website_link}
-              rel="noreferrer"
-              target="_blank"
-            >
-              Website
-            </a>{" "}
-            |{" "}
-            <a href={focusProject.github_link} rel="noreferrer" target="_blank">
-              GitHub
-            </a>
+            {"website_link" in focusProject && (
+              <span>
+                <a
+                  href={focusProject.website_link}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Website
+                </a>{" "}
+                |
+              </span>
+            )}
+            {"github_link" in focusProject && (
+              <span>
+                {" "}
+                <a
+                  href={focusProject.github_link}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+              </span>
+            )}
           </p>
         </div>
       </div>

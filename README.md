@@ -21,6 +21,7 @@ My portfolio site. Made with a [React](https://reactjs.org/) front-end and [Fire
     - [Typewriter](#typewriter)
     - [Projects](#projects)
 - [Responsive Design](#responsive-design)
+- [License](#license)
 
 # Firebase Setup
 
@@ -400,3 +401,7 @@ Website looks stunning whether on desktop view...
 ...or on a mobile and everything in-between
 
 ![mobile](./demo/mobile.gif)
+
+# License
+
+Licensed under [Mozilla Public License 2.0](./LICENSE.md).

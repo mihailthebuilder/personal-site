@@ -21,6 +21,7 @@ My portfolio site. Made with a [React](https://reactjs.org/) front-end and [Fire
     - [Typewriter](#typewriter)
     - [Projects](#projects)
 - [Responsive Design](#responsive-design)
+- [Features to consider adding](#features-to-consider-adding)
 - [License](#license)
 
 # Firebase Setup
@@ -401,6 +402,13 @@ Website looks stunning whether on desktop view...
 ...or on a mobile and everything in-between
 
 ![mobile](./demo/mobile.gif)
+
+# Features to consider adding
+
+- Separate "About" page that lists all the projects. That way people don't have to keep pressing the left/right arrow buttons to go through all of them.
+- Replace Firebase back-end services with an in-house solution.
+- Option to download CV.
+- Contact form - could be on the landing page or a separate one.
 
 # License
 

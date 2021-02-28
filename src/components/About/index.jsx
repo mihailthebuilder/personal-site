@@ -34,10 +34,9 @@ const About = ({ typewriterText, startAnimations }) => {
           />
           <div className={animationStep >= 2 ? "" : "about-hide"}>
             <p>
-              Hi, my name is Mihail and I'm a Front-End Web Developer who loves
-              building cool UIs that work splendidly across all devices. I
-              specialise in React web apps that are powered by Firebase back-end
-              services.
+              Hi, my name is Mihail and I'm a Full-Stack Web Developer who loves
+              working on the weird and wonderful. I'm currently building things
+              in React, Meteor and Django.
             </p>
             <p>
               I taught myself how to code, so it's safe to say that I can learn
@@ -57,14 +56,15 @@ const About = ({ typewriterText, startAnimations }) => {
             <div>
               <h3>Languages & Frameworks</h3>
               <p>
-                JavaScript, React, jQuery, HTML, CSS, Sass, Bootstrap 4, SQL
+                JavaScript, React, Meteor, Python, Django, jQuery, HTML, CSS,
+                Sass, Bootstrap 4, SQL
               </p>
             </div>
             <div>
               <h3>Dev Tools & Software</h3>
               <p>
-                Firebase, Git, GitHub, GitHub Pages, NPM, Webpack, Visual Studio
-                Code, Figma, Webflow
+                Heroku, Firebase, Git, GitHub, GitHub Pages, NPM, Webpack,
+                Visual Studio Code, Figma, Webflow
               </p>
             </div>
           </div>

@@ -11,7 +11,7 @@ function App() {
     <div>
       <Typewriter
         selectorTypewriter=".landing-title-role"
-        typewriterText="FRONT-END DEVELOPER."
+        typewriterText="FULL-STACK DEVELOPER."
         ChildComponent={Landing}
       />
       <Typewriter

@@ -180,13 +180,15 @@ const Projects = ({ typewriterText, startAnimations }) => {
                   target="_blank"
                 >
                   Website
-                </a>{" "}
-                |
+                </a>
               </span>
             )}
+            {"website_link" in focusProject &&
+              "github_link" in focusProject && (
+                <span className="link-separator">|</span>
+              )}
             {"github_link" in focusProject && (
               <span>
-                {" "}
                 <a
                   href={focusProject.github_link}
                   rel="noreferrer"

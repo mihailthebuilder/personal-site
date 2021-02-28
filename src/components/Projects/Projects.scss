@@ -57,6 +57,10 @@
   grid-column-end: 3;
 }
 
+.link-separator {
+  margin: 0 1rem;
+}
+
 @media (max-width: 1200px) {
   .project-chooser {
     grid-template-columns: 4rem 35rem 4rem;
@@ -107,6 +111,10 @@
   .project-info {
     grid-column-start: 1;
     grid-column-end: span 2;
+  }
+
+  .link-separator {
+    margin: 0 0.6rem;
   }
 }
 

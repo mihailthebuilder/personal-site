@@ -51,6 +51,12 @@ const About = ({ typewriterText, startAnimations }) => {
               product-market strategies, having worked on a number of startups
               myself.
             </p>
+            <p>
+              I love talking about anything at the intersection of business and
+              tech, so <a href="#contact">send me a message</a> if you have a
+              project in mind! At worst, I'll try to point you in the right
+              direction. And at best, I might just help you build it :)
+            </p>
           </div>
         </div>
         <div className="competencies-container">

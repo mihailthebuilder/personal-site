@@ -34,17 +34,22 @@ const About = ({ typewriterText, startAnimations }) => {
           />
           <div className={animationStep >= 2 ? "" : "about-hide"}>
             <p>
-              Hi, my name is Mihail and I'm a Full-Stack Web Developer who loves
-              working on the weird and wonderful. I'm currently building things
-              in React, Meteor and Django.
+              Hi there! My name is Mihail and I'm a Full-Stack Web Developer who
+              loves building things in React, Meteor and Django. I currently
+              work at{" "}
+              <a href="https://connect4.app/" target="_blank" rel="noreferrer">
+                Connect4
+              </a>{" "}
+              , a B2B SaaS startup that wants to take online client meetings to
+              another level.
             </p>
             <p>
               I taught myself how to code, so it's safe to say that I can learn
               any new, complex concepts on my own. My previous life in software
               sales has also made me great at teamwork and effective
-              communication. Last but not least, I can understand product-market
-              strategies very well, having worked on a number of B2B and B2C
-              startups.
+              communication. Last but not least, I'm great at analysing
+              product-market strategies, having worked on a number of startups
+              myself.
             </p>
           </div>
         </div>

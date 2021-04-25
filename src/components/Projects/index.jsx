@@ -175,6 +175,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
             {"website_link" in focusProject && (
               <span>
                 <a
+                  className="small-link"
                   href={focusProject.website_link}
                   rel="noreferrer"
                   target="_blank"
@@ -190,6 +191,7 @@ const Projects = ({ typewriterText, startAnimations }) => {
             {"github_link" in focusProject && (
               <span>
                 <a
+                  className="small-link"
                   href={focusProject.github_link}
                   rel="noreferrer"
                   target="_blank"

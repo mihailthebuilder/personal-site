@@ -8,6 +8,15 @@
   font-size: 1.5rem;
 }
 
+a.small-link {
+  color: $carolina-blue;
+  cursor: pointer;
+
+  &:hover {
+    color: $english-lavender;
+  }
+}
+
 @media (max-width: 1400px) {
   .section-styling {
     font-size: 1.2rem;

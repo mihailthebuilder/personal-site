@@ -37,7 +37,12 @@ const About = ({ typewriterText, startAnimations }) => {
               Hi there! My name is Mihail and I'm a Full-Stack Web Developer who
               loves building things in React, Meteor and Django. I currently
               work at{" "}
-              <a href="https://connect4.app/" target="_blank" rel="noreferrer">
+              <a
+                className="small-link"
+                href="https://connect4.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Connect4
               </a>{" "}
               , a B2B SaaS startup that wants to take online client meetings to
@@ -53,9 +58,13 @@ const About = ({ typewriterText, startAnimations }) => {
             </p>
             <p>
               I love talking about anything at the intersection of business and
-              tech, so <a href="#contact">send me a message</a> if you have a
-              project in mind! At worst, I'll try to point you in the right
-              direction. And at best, I might just help you build it :)
+              tech, so{" "}
+              <a className="small-link" href="#contact">
+                send me a message
+              </a>{" "}
+              if you have a project in mind! At worst, I'll try to point you in
+              the right direction. And at best, I might just help you build it
+              :)
             </p>
           </div>
         </div>

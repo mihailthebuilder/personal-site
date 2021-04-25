@@ -74,14 +74,14 @@ const About = ({ typewriterText, startAnimations }) => {
           </h2>
           <div className={animationStep >= 4 ? "" : "about-hide"}>
             <div>
-              <h3>Frontend</h3>
+              <h3>Front-end</h3>
               <p>
                 React, Styled Components, Sass, jQuery, BlazeJS, Bootstrap,
                 Webpack
               </p>
             </div>
             <div>
-              <h3>Backend</h3>
+              <h3>Back-end</h3>
               <p>Python, Django, Meteor, MongoDB, Firebase, Heroku, SQL</p>
             </div>
             <div>
